@@ -46,7 +46,7 @@ export default function CreateNewNote({
         <div style={{ marginTop: "10px" }}>
           <TextField
             id="note-title-input"
-            label="Your note title"
+            label="Title"
             type="text"
             value={titleInput}
             onChange={(e) => setTitleInput(e.target.value)}
@@ -57,7 +57,7 @@ export default function CreateNewNote({
         <div style={{ marginTop: "15px" }}>
           <TextField
             id="note-discription-input"
-            label="Your note discription"
+            label="Discription"
             rows={4}
             value={discriptionInput}
             onChange={(e) => setDescriptionInput(e.target.value)}

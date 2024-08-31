@@ -1,4 +1,5 @@
 import CreateNewNote from "./components/CreateNewNote";
+import NoteList from "./components/NoteList";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
@@ -31,7 +32,7 @@ export default function App() {
       />
       <div className="site-wrapper">
         <Header setShowCreateNewNote={setShowCreateNewNote} />
-        <main></main>
+        <NoteList />
         <Footer />
       </div>
     </ThemeProvider>
