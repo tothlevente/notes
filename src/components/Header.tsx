@@ -3,6 +3,8 @@ import AddCircleTwoToneIcon from "@mui/icons-material/AddCircleTwoTone";
 import SettingsTwoToneIcon from "@mui/icons-material/SettingsTwoTone";
 import Logo from "./Logo";
 
+import { Box } from "@mui/system";
+
 import {
   AppBar,
   IconButton,
@@ -10,9 +12,8 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import { Box } from "@mui/system";
 
-export default function Header() {
+export default function Header({ setShowCreateNewNote }: any) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -32,6 +33,9 @@ export default function Header() {
               color="inherit"
               aria-label="create new note"
               sx={{ mr: 2 }}
+              onClick={() => {
+                setShowCreateNewNote(true);
+              }}
             >
               <AddCircleTwoToneIcon />
             </IconButton>
