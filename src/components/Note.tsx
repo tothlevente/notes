@@ -1,4 +1,5 @@
-import LaunchIcon from "@mui/icons-material/Launch";
+import EditNoteIcon from "@mui/icons-material/EditNote";
+import DeleteIcon from "@mui/icons-material/Delete";
 import NotesIcon from "@mui/icons-material/Notes";
 
 import {
@@ -24,13 +25,32 @@ export default function Note({
       }}
       alignItems="flex-start"
       secondaryAction={
-        <IconButton
-          sx={{ marginRight: "5px" }}
-          edge="end"
-          aria-label="open"
-        >
-          <LaunchIcon />
-        </IconButton>
+        <>
+          <IconButton
+            sx={{
+              marginRight: "5px",
+              "&:hover": {
+                color: "#212121",
+              },
+            }}
+            edge="end"
+            aria-label="edit"
+          >
+            <EditNoteIcon />
+          </IconButton>
+          <IconButton
+            sx={{
+              marginRight: "5px",
+              "&:hover": {
+                color: "#ff5722",
+              },
+            }}
+            edge="end"
+            aria-label="delete"
+          >
+            <DeleteIcon />
+          </IconButton>
+        </>
       }
     >
       <ListItemAvatar>

@@ -1,6 +1,4 @@
-import NightsStayTwoToneIcon from "@mui/icons-material/NightsStayTwoTone";
-import AddCircleTwoToneIcon from "@mui/icons-material/AddCircleTwoTone";
-import SettingsTwoToneIcon from "@mui/icons-material/SettingsTwoTone";
+import NoteAddIcon from "@mui/icons-material/NoteAdd";
 import Logo from "./Logo";
 
 import { Box } from "@mui/system";
@@ -37,29 +35,7 @@ export default function Header({ setShowCreateNewNote }: any) {
                 setShowCreateNewNote(true);
               }}
             >
-              <AddCircleTwoToneIcon />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="Switch to dark mode">
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="switch to dark mode"
-              sx={{ mr: 2 }}
-            >
-              <NightsStayTwoToneIcon />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="Open settings">
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="open settings"
-              sx={{ mr: 2 }}
-            >
-              <SettingsTwoToneIcon />
+              <NoteAddIcon />
             </IconButton>
           </Tooltip>
         </Toolbar>

@@ -1,8 +1,16 @@
+import NoteAddIcon from "@mui/icons-material/NoteAdd";
 import NoteDialogContent from "./NoteDialogContent";
 import NoteDialogActions from "./NoteDialogActions";
 
+import {
+  AppBar,
+  Dialog,
+  DialogTitle,
+  Toolbar,
+  Typography,
+} from "@mui/material";
+
 import { useState } from "react";
-import { Dialog, DialogTitle } from "@mui/material";
 
 export default function CreateNewNote({
   showCreateNewNote,
@@ -28,12 +36,21 @@ export default function CreateNewNote({
       maxWidth={"sm"}
       fullWidth
     >
-      <DialogTitle
-        sx={{ fontWeight: "bold" }}
-        id="new-note-dialog-title"
-      >
-        Create a new note
+      <DialogTitle>
+        <AppBar sx={{ position: "relative" }}>
+          <Toolbar>
+            <NoteAddIcon />
+            <Typography
+              sx={{ ml: 2, flex: 1 }}
+              variant="h6"
+              component="div"
+            >
+              Create a new note
+            </Typography>
+          </Toolbar>
+        </AppBar>
       </DialogTitle>
+
       <NoteDialogContent
         titleInput={titleInput}
         setTitleInput={setTitleInput}
