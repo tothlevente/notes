@@ -1,16 +1,8 @@
-import BlockIcon from "@mui/icons-material/Block";
-import SaveIcon from "@mui/icons-material/Save";
+import NoteDialogContent from "./NoteDialogContent";
+import NoteDialogActions from "./NoteDialogActions";
 
 import { useState } from "react";
-
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  TextField,
-} from "@mui/material";
+import { Dialog, DialogTitle } from "@mui/material";
 
 export default function CreateNewNote({
   showCreateNewNote,
@@ -42,51 +34,18 @@ export default function CreateNewNote({
       >
         Create a new note
       </DialogTitle>
-      <DialogContent>
-        <div style={{ marginTop: "10px" }}>
-          <TextField
-            id="note-title-input"
-            label="Title"
-            type="text"
-            value={titleInput}
-            onChange={(e) => setTitleInput(e.target.value)}
-            fullWidth
-            required
-          />
-        </div>
-        <div style={{ marginTop: "15px" }}>
-          <TextField
-            id="note-discription-input"
-            label="Discription"
-            rows={4}
-            value={discriptionInput}
-            onChange={(e) => setDescriptionInput(e.target.value)}
-            fullWidth
-            multiline
-            required
-          />
-        </div>
-      </DialogContent>
-      <DialogActions>
-        <Button
-          variant="contained"
-          onClick={handleSave}
-          startIcon={<SaveIcon />}
-          disabled={
-            titleInput.length < 1 || discriptionInput.length < 1
-          }
-        >
-          Save
-        </Button>
-        <Button
-          variant="contained"
-          color="secondary"
-          onClick={handleClose}
-          startIcon={<BlockIcon />}
-        >
-          Close
-        </Button>
-      </DialogActions>
+      <NoteDialogContent
+        titleInput={titleInput}
+        setTitleInput={setTitleInput}
+        discriptionInput={discriptionInput}
+        setDescriptionInput={setDescriptionInput}
+      />
+      <NoteDialogActions
+        handleSave={handleSave}
+        handleClose={handleClose}
+        titleInput={titleInput}
+        discriptionInput={discriptionInput}
+      />
     </Dialog>
   );
 }
