@@ -29,10 +29,9 @@ export default function NoteCard({
             sx={{
               marginRight: "10px",
               color: "background.paper",
-              bgcolor: "#616161",
             }}
           >
-            {<NotesIcon />}
+            {<NotesIcon color="primary" />}
           </Avatar>
           {title}
         </Typography>
@@ -50,7 +49,7 @@ export default function NoteCard({
           sx={{
             marginRight: "3px",
             "&:hover": {
-              color: "#212121",
+              color: "#2196f3",
             },
           }}
           onClick={() => {
