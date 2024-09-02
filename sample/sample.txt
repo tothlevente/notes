@@ -1,3 +1,5 @@
+---------------------------------------------------------------------------------
+
 import NightsStayTwoToneIcon from "@mui/icons-material/NightsStayTwoTone";
 import AddCircleTwoToneIcon from "@mui/icons-material/AddCircleTwoTone";
 import SettingsTwoToneIcon from "@mui/icons-material/SettingsTwoTone";
@@ -27,10 +29,3 @@ import SettingsTwoToneIcon from "@mui/icons-material/SettingsTwoTone";
 </Tooltip>
 
 ---------------------------------------------------------------------------------
-
-<DialogTitle
-    sx={{ fontWeight: "bold" }}
-    id="new-note-dialog-title"
-    >
-    Create a new note
-</DialogTitle> 

@@ -1,11 +1,35 @@
-import { Stack } from "@mui/material";
+import NoteProps from "../interfaces/NoteProps";
 import NoteCard from "./NoteCard";
 
-const dummyTitle = "Lorem ipsum dolor sit amet";
-const dummyDiscription =
-  "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. ";
+import { Stack } from "@mui/material";
 
-export default function NoteStack() {
+export default function NoteStack({ notes, setNotes }: any) {
+  function handleEdit(index: number) {
+    const values = [...notes];
+    const editedTitle = prompt(`Edit the title:`);
+    const editedDiscription = prompt(`Edit the discription:`);
+
+    if (
+      editedTitle !== null &&
+      editedTitle.trim() !== "" &&
+      editedDiscription !== null &&
+      editedDiscription.trim() !== ""
+    ) {
+      let updatedNotes = [...values];
+      updatedNotes[index].title = editedTitle;
+      updatedNotes[index].discription = editedDiscription;
+
+      setNotes(updatedNotes);
+    }
+  }
+
+  function handleDelete(key: number) {
+    const values = [...notes];
+    const update = values.filter((note) => note.id !== key);
+
+    setNotes(update);
+  }
+
   return (
     <Stack
       useFlexGap
@@ -17,12 +41,20 @@ export default function NoteStack() {
         flexWrap: "wrap",
       }}
     >
-      <NoteCard title={dummyTitle} discription={dummyDiscription} />
-      <NoteCard title={dummyTitle} discription={dummyDiscription} />
-      <NoteCard title={dummyTitle} discription={dummyDiscription} />
-      <NoteCard title={dummyTitle} discription={dummyDiscription} />
-      <NoteCard title={dummyTitle} discription={dummyDiscription} />
-      <NoteCard title={dummyTitle} discription={dummyDiscription} />
+      {notes.map((note: NoteProps, index: number) => {
+        return (
+          <div key={index}>
+            <NoteCard
+              id={note.id}
+              index={index}
+              title={note.title}
+              discription={note.discription}
+              handleEdit={handleEdit}
+              handleDelete={handleDelete}
+            />
+          </div>
+        );
+      })}
     </Stack>
   );
 }

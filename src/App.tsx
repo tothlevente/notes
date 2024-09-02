@@ -1,5 +1,6 @@
-import CreateNewNote from "./components/CreateNewNote";
+import CreateNote from "./components/CreateNote";
 import NoteStack from "./components/NoteStack";
+import NoteProps from "./interfaces/NoteProps";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
@@ -12,6 +13,7 @@ const theme = createTheme({
     fontFamily: ["Montserrat", "sans-serif"].join(","),
   },
   palette: {
+    mode: "light",
     primary: {
       main: "#2196f3",
     },
@@ -23,16 +25,19 @@ const theme = createTheme({
 
 export default function App() {
   const [showCreateNewNote, setShowCreateNewNote] = useState(false);
+  const [notes, setNotes] = useState<NoteProps[]>([]);
 
   return (
     <ThemeProvider theme={theme}>
-      <CreateNewNote
+      <CreateNote
+        notes={notes}
+        setNotes={setNotes}
         showCreateNewNote={showCreateNewNote}
         setShowCreateNewNote={setShowCreateNewNote}
       />
       <div className="site-wrapper">
         <Header setShowCreateNewNote={setShowCreateNewNote} />
-        <NoteStack />
+        <NoteStack notes={notes} setNotes={setNotes} />
         <Footer />
       </div>
     </ThemeProvider>

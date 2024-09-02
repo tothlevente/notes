@@ -1,8 +1,6 @@
 import NoteAddIcon from "@mui/icons-material/NoteAdd";
 import Logo from "./Logo";
 
-import { Box } from "@mui/system";
-
 import {
   AppBar,
   IconButton,
@@ -10,6 +8,8 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
+
+import { Box } from "@mui/system";
 
 export default function Header({ setShowCreateNewNote }: any) {
   return (

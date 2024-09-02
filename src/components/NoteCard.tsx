@@ -8,7 +8,14 @@ import Card from "@mui/material/Card";
 
 import { Avatar, IconButton } from "@mui/material";
 
-export default function NoteCard({ title, discription }: any) {
+export default function NoteCard({
+  id,
+  index,
+  title,
+  discription,
+  handleEdit,
+  handleDelete,
+}: any) {
   return (
     <Card sx={{ width: 500, height: 250 }}>
       <CardContent>
@@ -38,26 +45,32 @@ export default function NoteCard({ title, discription }: any) {
       </CardContent>
       <CardActions sx={{ justifyContent: "flex-end" }}>
         <IconButton
+          edge="end"
+          aria-label="edit"
           sx={{
             marginRight: "3px",
             "&:hover": {
               color: "#212121",
             },
           }}
-          edge="end"
-          aria-label="edit"
+          onClick={() => {
+            handleEdit(index);
+          }}
         >
           <EditNoteIcon />
         </IconButton>
         <IconButton
+          edge="end"
+          aria-label="delete"
           sx={{
             marginRight: "5px",
             "&:hover": {
               color: "#ff5722",
             },
           }}
-          edge="end"
-          aria-label="delete"
+          onClick={() => {
+            handleDelete(id);
+          }}
         >
           <DeleteIcon />
         </IconButton>
