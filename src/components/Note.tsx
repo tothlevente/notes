@@ -19,6 +19,8 @@ export default function Note({
   return (
     <ListItem
       sx={{
+        width: "500px",
+        maxWidth: "500px",
         margin: "10px",
         height: "130px",
         bgcolor: color || "background.paper",

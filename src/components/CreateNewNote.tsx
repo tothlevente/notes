@@ -41,7 +41,7 @@ export default function CreateNewNote({
           <Toolbar>
             <NoteAddIcon />
             <Typography
-              sx={{ ml: 2, flex: 1 }}
+              sx={{ ml: 0, flex: 1 }}
               variant="h6"
               component="div"
             >
