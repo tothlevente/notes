@@ -31,7 +31,7 @@ export default function NoteCard({ title, discription }: any) {
         </Typography>
         <Typography
           variant="body2"
-          sx={{ marginTop: "5px", color: "text.secondary" }}
+          sx={{ marginTop: "12px", color: "text.secondary" }}
         >
           {discription}
         </Typography>

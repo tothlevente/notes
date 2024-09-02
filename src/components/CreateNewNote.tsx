@@ -50,7 +50,6 @@ export default function CreateNewNote({
           </Toolbar>
         </AppBar>
       </DialogTitle>
-
       <NoteDialogContent
         titleInput={titleInput}
         setTitleInput={setTitleInput}
