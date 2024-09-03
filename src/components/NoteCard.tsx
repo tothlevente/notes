@@ -15,7 +15,19 @@ export default function NoteCard({
   setShowHandleDelte,
 }: any) {
   return (
-    <Card sx={{ width: 500, height: 250 }}>
+    <Card
+      sx={{
+        minWidth: 50,
+        maxWidth: 500,
+        height: 250,
+        "@media (max-width: 459px)": {
+          height: 300,
+        },
+        "@media (max-width: 349px)": {
+          height: 350,
+        },
+      }}
+    >
       <CardContent>
         <Typography
           gutterBottom
@@ -31,7 +43,7 @@ export default function NoteCard({
           >
             {<NotesIcon color="primary" />}
           </Avatar>
-          {title}
+          {title.length < 30 ? title : title.substring(0, 30) + "..."}
         </Typography>
         <Typography
           variant="body2"
@@ -42,7 +54,9 @@ export default function NoteCard({
             : discription.substring(0, 300) + "..."}
         </Typography>
       </CardContent>
-      <CardActions sx={{ justifyContent: "flex-end" }}>
+      <CardActions
+        sx={{ justifyContent: "flex-end", marginBottom: "20px" }}
+      >
         <IconButton
           edge="end"
           aria-label="edit"
