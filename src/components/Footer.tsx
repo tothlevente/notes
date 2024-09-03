@@ -5,7 +5,7 @@ import { AppBar, Toolbar } from "@mui/material";
 export default function Footer() {
   return (
     <AppBar
-      position="fixed"
+      position="absolute"
       color="primary"
       sx={{ top: "auto", bottom: 0 }}
     >
