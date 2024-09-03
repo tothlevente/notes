@@ -30,6 +30,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Paper
+        elevation={0}
         square
         sx={{
           pb: "150px",
