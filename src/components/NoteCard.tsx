@@ -37,7 +37,9 @@ export default function NoteCard({
           variant="body2"
           sx={{ marginTop: "12px", color: "text.secondary" }}
         >
-          {discription}
+          {discription.length < 300
+            ? discription
+            : discription.substring(0, 300) + "..."}
         </Typography>
       </CardContent>
       <CardActions sx={{ justifyContent: "flex-end" }}>
