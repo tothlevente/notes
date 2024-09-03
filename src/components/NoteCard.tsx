@@ -9,11 +9,10 @@ import Card from "@mui/material/Card";
 import { Avatar, IconButton } from "@mui/material";
 
 export default function NoteCard({
-  index,
   title,
   discription,
-  handleEdit,
-  setHaDelte,
+  setShowHandleEdit,
+  setShowHandleDelte,
 }: any) {
   return (
     <Card sx={{ width: 500, height: 250 }}>
@@ -52,7 +51,7 @@ export default function NoteCard({
             },
           }}
           onClick={() => {
-            handleEdit(index);
+            setShowHandleEdit(true);
           }}
         >
           <EditNoteIcon />
@@ -67,7 +66,7 @@ export default function NoteCard({
             },
           }}
           onClick={() => {
-            setHaDelte(true);
+            setShowHandleDelte(true);
           }}
         >
           <DeleteIcon />

@@ -14,7 +14,7 @@ export default function Footer() {
           style={{
             flex: 1,
             flexGrow: 1,
-            margin: "10px",
+            margin: "20px",
             fontSize: "small",
           }}
         >
