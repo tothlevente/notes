@@ -1,4 +1,5 @@
 import NoteAddIcon from "@mui/icons-material/NoteAdd";
+import CreateNote from "./CreateNote";
 import Logo from "./Logo";
 
 import {
@@ -11,9 +12,20 @@ import {
 
 import { Box } from "@mui/system";
 
-export default function Header({ setShowCreateNewNote }: any) {
+export default function Header({
+  notes,
+  setNotes,
+  showCreateNewNote,
+  setShowCreateNewNote,
+}: any) {
   return (
     <Box sx={{ flexGrow: 1 }}>
+      <CreateNote
+        notes={notes}
+        setNotes={setNotes}
+        showCreateNewNote={showCreateNewNote}
+        setShowCreateNewNote={setShowCreateNewNote}
+      />
       <AppBar position="static">
         <Toolbar>
           <Logo />

@@ -5,7 +5,7 @@ import { AppBar, Toolbar } from "@mui/material";
 export default function Footer() {
   return (
     <AppBar
-      position="absolute"
+      position="fixed"
       color="primary"
       sx={{ top: "auto", bottom: 0 }}
     >
@@ -16,6 +16,7 @@ export default function Footer() {
             flexGrow: 1,
             margin: "20px",
             fontSize: "small",
+            textAlign: "center",
           }}
         >
           <p>

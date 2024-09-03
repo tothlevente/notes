@@ -1,11 +1,10 @@
-import CreateNote from "./components/CreateNote";
 import NoteStack from "./components/NoteStack";
 import NoteProps from "./interfaces/NoteProps";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 import { ThemeProvider } from "@emotion/react";
-import { createTheme } from "@mui/material";
+import { createTheme, CssBaseline, Paper } from "@mui/material";
 import { useState } from "react";
 
 const theme = createTheme({
@@ -29,17 +28,28 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <CreateNote
-        notes={notes}
-        setNotes={setNotes}
-        showCreateNewNote={showCreateNewNote}
-        setShowCreateNewNote={setShowCreateNewNote}
-      />
-      <div className="site-wrapper">
-        <Header setShowCreateNewNote={setShowCreateNewNote} />
+      <CssBaseline />
+      <Paper
+        square
+        sx={{
+          pb: "150px",
+          "@media (max-width: 459px)": {
+            pb: "200px",
+          },
+          "@media (max-width: 349px)": {
+            pb: "300px",
+          },
+        }}
+      >
+        <Header
+          notes={notes}
+          setNotes={setNotes}
+          showCreateNewNote={showCreateNewNote}
+          setShowCreateNewNote={setShowCreateNewNote}
+        />
         <NoteStack notes={notes} setNotes={setNotes} />
-        <Footer />
-      </div>
+      </Paper>
+      <Footer />
     </ThemeProvider>
   );
 }

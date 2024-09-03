@@ -41,7 +41,7 @@ export default function NoteCard({
               color: "background.paper",
             }}
           >
-            {<NotesIcon color="primary" />}
+            <NotesIcon />
           </Avatar>
           {title.length < 30 ? title : title.substring(0, 30) + "..."}
         </Typography>
