@@ -1,10 +1,11 @@
+import getLocalStorageItem from "./controllers/getLocalStorageItem";
 import NoteStack from "./components/NoteStack";
 import NoteProps from "./interfaces/NoteProps";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-import { ThemeProvider } from "@emotion/react";
 import { createTheme, CssBaseline, Paper } from "@mui/material";
+import { ThemeProvider } from "@emotion/react";
 import { useEffect, useState } from "react";
 
 const theme = createTheme({
@@ -28,7 +29,7 @@ export default function App() {
 
   useEffect(() => {
     if (localStorage.getItem("notes") !== null) {
-      setNotes(JSON.parse(localStorage.getItem("notes")!));
+      setNotes(getLocalStorageItem());
     }
   }, [setNotes]);
 

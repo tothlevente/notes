@@ -1,3 +1,4 @@
+import setLocalStorageItem from "../controllers/setLocalStorageItem";
 import NoteDialogContent from "./NoteDialogContent";
 import NoteDialogActions from "./NoteDialogActions";
 
@@ -29,17 +30,7 @@ export default function CreateNote({
       },
     ]);
 
-    localStorage.setItem(
-      "notes",
-      JSON.stringify([
-        ...notes,
-        {
-          id: Math.round(Math.random() * 10000000),
-          title: title,
-          discription: discription,
-        },
-      ])
-    );
+    setLocalStorageItem(notes, title, discription);
 
     setTitle("");
     setDescription("");

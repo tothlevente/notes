@@ -1,3 +1,4 @@
+import updateLocalStorageItem from "../controllers/updateLocalStorageItem";
 import DeleteIcon from "@mui/icons-material/Delete";
 import BlockIcon from "@mui/icons-material/Block";
 
@@ -20,10 +21,11 @@ export default function DeleteNote({
 }: any) {
   function handleDelete(key: number) {
     const values = [...notes];
-    const update = values.filter((note) => note.id !== key);
+    const updatedNotes = values.filter((note) => note.id !== key);
 
-    setNotes(update);
-    localStorage.setItem("notes", JSON.stringify(update));
+    setNotes(updatedNotes);
+    updateLocalStorageItem(updatedNotes);
+
     setShowHandleDelte(false);
   }
 

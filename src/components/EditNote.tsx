@@ -1,3 +1,4 @@
+import updateLocalStorageItem from "../controllers/updateLocalStorageItem";
 import NoteDialogContent from "./NoteDialogContent";
 import NoteDialogActions from "./NoteDialogActions";
 
@@ -37,6 +38,8 @@ export default function EditNote({
       updatedNotes[index].discription = discription;
 
       setNotes(updatedNotes);
+      updateLocalStorageItem(updatedNotes);
+
       setShowHandleEdit(false);
     }
   }
