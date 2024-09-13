@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import { createTheme, CssBaseline, Paper } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
 import { useEffect, useState } from "react";
+import { blue, grey } from "@mui/material/colors";
 
 const theme = createTheme({
   typography: {
@@ -15,10 +16,13 @@ const theme = createTheme({
   palette: {
     mode: "light",
     primary: {
-      main: "#2196f3",
+      main: blue[500],
     },
     secondary: {
-      main: "#424242",
+      main: grey[800],
+    },
+    background: {
+      default: grey[50],
     },
   },
 });
@@ -47,6 +51,7 @@ export default function App() {
           "@media (max-width: 349px)": {
             pb: "300px",
           },
+          bgcolor: grey[50],
         }}
       >
         <Header

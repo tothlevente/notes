@@ -1,9 +1,16 @@
 import setLocalStorageItem from "../controllers/setLocalStorageItem";
 import NoteDialogContent from "./NoteDialogContent";
 import NoteDialogActions from "./NoteDialogActions";
+import CloseIcon from "@mui/icons-material/Close";
 
-import { Dialog, DialogTitle } from "@mui/material";
+import { Dialog, DialogTitle, IconButton } from "@mui/material";
 import { useState } from "react";
+import { grey } from "@mui/material/colors";
+
+//FIXME !!!
+const dummyTitle = "Lorem ipsum dolor sit amet";
+const dummyDiscription =
+  "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. ";
 
 export default function CreateNote({
   notes,
@@ -11,8 +18,8 @@ export default function CreateNote({
   showCreateNewNote,
   setShowCreateNewNote,
 }: any) {
-  const [title, setTitle] = useState("");
-  const [discription, setDescription] = useState("");
+  const [title, setTitle] = useState(dummyTitle);
+  const [discription, setDescription] = useState(dummyDiscription);
 
   function handleClose() {
     setTitle("");
@@ -34,6 +41,7 @@ export default function CreateNote({
 
     setTitle("");
     setDescription("");
+
     setShowCreateNewNote(false);
   }
 
@@ -41,19 +49,28 @@ export default function CreateNote({
     <Dialog
       open={showCreateNewNote}
       onClose={handleClose}
-      aria-labelledby="create-note-dialog-title"
-      aria-describedby="create-note-dialog-description"
       maxWidth={"sm"}
       fullWidth
     >
       <DialogTitle
-        sx={{ fontWeight: "bold" }}
-        id="new-note-dialog-title"
-        color="primary"
-        bgcolor="#eeeeee"
+        sx={{ m: 0, p: 2, fontWeight: "bold" }}
+        color={grey[900]}
+        bgcolor={grey[200]}
       >
         Create a new note
       </DialogTitle>
+      <IconButton
+        aria-label="close"
+        onClick={handleClose}
+        sx={(theme) => ({
+          position: "absolute",
+          right: 8,
+          top: 8,
+          color: theme.palette.grey[500],
+        })}
+      >
+        <CloseIcon />
+      </IconButton>
       <NoteDialogContent
         titleInput={title}
         setTitleInput={setTitle}

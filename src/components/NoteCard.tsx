@@ -1,9 +1,11 @@
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import NotesIcon from "@mui/icons-material/Notes";
 import Typography from "@mui/material/Typography";
+import ShowNoteDialog from "./ShowNoteDialog";
 import DeleteNote from "./DeleteNote";
 import Card from "@mui/material/Card";
 import EditNote from "./EditNote";
@@ -20,8 +22,10 @@ export default function NoteCard({
   notes,
   setNotes,
 }: any) {
-  const [showHandleDelete, setShowHandleDelte] = useState(false);
-  const [showHandleEdit, setShowHandleEdit] = useState(false);
+  const [openHandleDelete, setOpenHandleDelte] = useState(false);
+  const [openHandleEdit, setOpenHandleEdit] = useState(false);
+
+  const [openShowNoteDialog, setOpenShowNoteDialog] = useState(false);
 
   return (
     <>
@@ -30,7 +34,7 @@ export default function NoteCard({
           display: "flex",
           width: 500,
           height: 250,
-          bgcolor: grey[200],
+          bgcolor: grey[300],
           "@media (max-width: 560px)": {
             width: "auto",
             minWidth: 50,
@@ -55,7 +59,7 @@ export default function NoteCard({
               <Avatar
                 sx={{
                   marginRight: "10px",
-                  color: "background.paper",
+                  color: grey[700],
                 }}
               >
                 <NotesIcon />
@@ -66,7 +70,7 @@ export default function NoteCard({
             </Typography>
             <Typography
               variant="body2"
-              sx={{ marginTop: "12px", color: "text.secondary" }}
+              sx={{ marginTop: "12px", color: grey[900] }}
             >
               {discription.length < 300
                 ? discription
@@ -81,6 +85,21 @@ export default function NoteCard({
           >
             <IconButton
               edge="end"
+              aria-label="delete"
+              sx={{
+                marginRight: "5px",
+                "&:hover": {
+                  color: blue[500],
+                },
+              }}
+              onClick={() => {
+                setOpenShowNoteDialog(true);
+              }}
+            >
+              <OpenInNewIcon />
+            </IconButton>
+            <IconButton
+              edge="end"
               aria-label="edit"
               sx={{
                 marginRight: "3px",
@@ -89,7 +108,7 @@ export default function NoteCard({
                 },
               }}
               onClick={() => {
-                setShowHandleEdit(true);
+                setOpenHandleEdit(true);
               }}
             >
               <EditNoteIcon />
@@ -104,7 +123,7 @@ export default function NoteCard({
                 },
               }}
               onClick={() => {
-                setShowHandleDelte(true);
+                setOpenHandleDelte(true);
               }}
             >
               <DeleteIcon />
@@ -112,9 +131,15 @@ export default function NoteCard({
           </CardActions>
         </Box>
       </Card>
+      <ShowNoteDialog
+        openShowNoteDialog={openShowNoteDialog}
+        setOpenShowNoteDialog={setOpenShowNoteDialog}
+        title={note.title}
+        discription={note.discription}
+      />
       <DeleteNote
-        showHandleDelete={showHandleDelete}
-        setShowHandleDelte={setShowHandleDelte}
+        openHandleDelete={openHandleDelete}
+        setOpenHandleDelte={setOpenHandleDelte}
         notes={notes}
         setNotes={setNotes}
         index={index}
@@ -122,8 +147,8 @@ export default function NoteCard({
         title={note.title}
       />
       <EditNote
-        showHandleEdit={showHandleEdit}
-        setShowHandleEdit={setShowHandleEdit}
+        openHandleEdit={openHandleEdit}
+        setOpenHandleEdit={setOpenHandleEdit}
         notes={notes}
         setNotes={setNotes}
         index={index}

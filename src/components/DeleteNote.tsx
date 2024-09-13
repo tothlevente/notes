@@ -1,6 +1,7 @@
 import updateLocalStorageItem from "../controllers/updateLocalStorageItem";
 import DeleteIcon from "@mui/icons-material/Delete";
 import BlockIcon from "@mui/icons-material/Block";
+import CloseIcon from "@mui/icons-material/Close";
 
 import {
   Button,
@@ -8,12 +9,14 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  IconButton,
   Typography,
 } from "@mui/material";
+import { grey, red } from "@mui/material/colors";
 
 export default function DeleteNote({
-  showHandleDelete,
-  setShowHandleDelte,
+  openHandleDelete,
+  setOpenHandleDelte,
   notes,
   setNotes,
   id,
@@ -26,27 +29,39 @@ export default function DeleteNote({
     setNotes(updatedNotes);
     updateLocalStorageItem(updatedNotes);
 
-    setShowHandleDelte(false);
+    setOpenHandleDelte(false);
   }
 
   function handleClose() {
-    setShowHandleDelte(false);
+    setOpenHandleDelte(false);
   }
 
   return (
     <Dialog
-      open={showHandleDelete}
-      onClose={setShowHandleDelte}
+      open={openHandleDelete}
+      onClose={handleClose}
       maxWidth={"sm"}
       fullWidth
     >
       <DialogTitle
-        sx={{ fontWeight: "bold" }}
-        color="#ff5722"
-        bgcolor="#eeeeee"
+        sx={{ m: 0, p: 2, fontWeight: "bold" }}
+        color={grey[900]}
+        bgcolor={grey[200]}
       >
         Delete note
       </DialogTitle>
+      <IconButton
+        aria-label="close"
+        onClick={handleClose}
+        sx={(theme) => ({
+          position: "absolute",
+          right: 8,
+          top: 8,
+          color: theme.palette.grey[500],
+        })}
+      >
+        <CloseIcon />
+      </IconButton>
       <DialogContent sx={{ marginTop: "12px", marginBottom: "12px" }}>
         <Typography>
           Are you sure to delete the{" "}
@@ -60,7 +75,7 @@ export default function DeleteNote({
       </DialogContent>
       <DialogActions sx={{ m: 1, p: 1 }}>
         <Button
-          sx={{ backgroundColor: "#ff5722" }}
+          sx={{ backgroundColor: red[500] }}
           variant="contained"
           onClick={() => handleDelete(id)}
           startIcon={<DeleteIcon />}

@@ -1,13 +1,15 @@
 import updateLocalStorageItem from "../controllers/updateLocalStorageItem";
 import NoteDialogContent from "./NoteDialogContent";
 import NoteDialogActions from "./NoteDialogActions";
+import CloseIcon from "@mui/icons-material/Close";
 
-import { Dialog, DialogTitle } from "@mui/material";
+import { Dialog, DialogTitle, IconButton } from "@mui/material";
 import { useEffect, useState } from "react";
+import { grey } from "@mui/material/colors";
 
 export default function EditNote({
-  showHandleEdit,
-  setShowHandleEdit,
+  openHandleEdit,
+  setOpenHandleEdit,
   notes,
   setNotes,
   index,
@@ -21,7 +23,7 @@ export default function EditNote({
   }, [notes]);
 
   function handleClose() {
-    setShowHandleEdit(false);
+    setOpenHandleEdit(false);
   }
 
   function handleEdit(index: number) {
@@ -40,27 +42,36 @@ export default function EditNote({
       setNotes(updatedNotes);
       updateLocalStorageItem(updatedNotes);
 
-      setShowHandleEdit(false);
+      setOpenHandleEdit(false);
     }
   }
 
   return (
     <Dialog
-      open={showHandleEdit}
+      open={openHandleEdit}
       onClose={handleClose}
-      aria-labelledby="edit-note-dialog-title"
-      aria-describedby="edit-note-dialog-description"
       maxWidth={"sm"}
       fullWidth
     >
       <DialogTitle
-        sx={{ fontWeight: "bold" }}
-        id="new-note-dialog-title"
-        color="primary"
-        bgcolor="#eeeeee"
+        sx={{ m: 0, p: 2, fontWeight: "bold" }}
+        color={grey[900]}
+        bgcolor={grey[200]}
       >
         Edit the note
       </DialogTitle>
+      <IconButton
+        aria-label="close"
+        onClick={handleClose}
+        sx={(theme) => ({
+          position: "absolute",
+          right: 8,
+          top: 8,
+          color: theme.palette.grey[500],
+        })}
+      >
+        <CloseIcon />
+      </IconButton>
       <NoteDialogContent
         titleInput={title}
         setTitleInput={setTitle}
