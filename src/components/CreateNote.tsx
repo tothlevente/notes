@@ -13,6 +13,7 @@ const dummyDiscription =
   "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. ";
 
 export default function CreateNote({
+  secret,
   notes,
   setNotes,
   showCreateNewNote,
@@ -37,7 +38,7 @@ export default function CreateNote({
       },
     ]);
 
-    setLocalStorageItem(notes, title, discription);
+    setLocalStorageItem(secret, notes, title, discription);
 
     setTitle("");
     setDescription("");

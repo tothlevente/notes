@@ -15,6 +15,7 @@ import { blue, grey, red } from "@mui/material/colors";
 import { useState } from "react";
 
 export default function NoteCard({
+  secret,
   index,
   title,
   discription,
@@ -24,7 +25,6 @@ export default function NoteCard({
 }: any) {
   const [openHandleDelete, setOpenHandleDelte] = useState(false);
   const [openHandleEdit, setOpenHandleEdit] = useState(false);
-
   const [openShowNoteDialog, setOpenShowNoteDialog] = useState(false);
 
   return (
@@ -138,6 +138,7 @@ export default function NoteCard({
         discription={note.discription}
       />
       <DeleteNote
+        secret={secret}
         openHandleDelete={openHandleDelete}
         setOpenHandleDelte={setOpenHandleDelte}
         notes={notes}
@@ -147,6 +148,7 @@ export default function NoteCard({
         title={note.title}
       />
       <EditNote
+        secret={secret}
         openHandleEdit={openHandleEdit}
         setOpenHandleEdit={setOpenHandleEdit}
         notes={notes}

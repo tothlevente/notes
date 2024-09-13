@@ -1,12 +1,13 @@
 import NoteProps from "../interfaces/NoteProps";
+import CryptoJS from "crypto-js";
 
 export default function setLocalStorageItem(
+  secret: string,
   notes: Array<NoteProps>,
   title: string,
   discription: string
 ) {
-  localStorage.setItem(
-    "notes",
+  const createdCryptoNote = CryptoJS.AES.encrypt(
     JSON.stringify([
       ...notes,
       {
@@ -14,6 +15,9 @@ export default function setLocalStorageItem(
         title: title,
         discription: discription,
       },
-    ])
-  );
+    ]),
+    secret
+  ).toString();
+
+  localStorage.setItem("notes", createdCryptoNote);
 }

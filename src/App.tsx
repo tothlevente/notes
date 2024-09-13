@@ -30,10 +30,11 @@ const theme = createTheme({
 export default function App() {
   const [showCreateNewNote, setShowCreateNewNote] = useState(false);
   const [notes, setNotes] = useState<NoteProps[]>([]);
+  const [secret, setSecret] = useState("secret");
 
   useEffect(() => {
     if (localStorage.getItem("notes") !== null) {
-      setNotes(getLocalStorageItem());
+      setNotes(getLocalStorageItem(secret));
     }
   }, [setNotes]);
 
@@ -55,12 +56,14 @@ export default function App() {
         }}
       >
         <Header
+          secret={secret}
           notes={notes}
           setNotes={setNotes}
           showCreateNewNote={showCreateNewNote}
           setShowCreateNewNote={setShowCreateNewNote}
         />
         <NoteStack
+          secret={secret}
           notes={notes}
           setNotes={setNotes}
           setShowCreateNewNote={setShowCreateNewNote}

@@ -13,6 +13,7 @@ import {
 import { Box } from "@mui/system";
 
 export default function Header({
+  secret,
   notes,
   setNotes,
   showCreateNewNote,
@@ -21,6 +22,7 @@ export default function Header({
   return (
     <Box sx={{ flexGrow: 1 }}>
       <CreateNote
+        secret={secret}
         notes={notes}
         setNotes={setNotes}
         showCreateNewNote={showCreateNewNote}

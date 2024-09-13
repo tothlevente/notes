@@ -5,6 +5,7 @@ import NoteCard from "./NoteCard";
 import { Box, Button, Stack, Typography } from "@mui/material";
 
 export default function NoteStack({
+  secret,
   notes,
   setNotes,
   setShowCreateNewNote,
@@ -55,6 +56,7 @@ export default function NoteStack({
             return (
               <div key={index}>
                 <NoteCard
+                  secret={secret}
                   index={index}
                   title={note.title}
                   discription={note.discription}
