@@ -1,12 +1,19 @@
 import CryptoJS from "crypto-js";
 
-export default function getLocalStorageItem(secret: string) {
+export default function getLocalStorageItem(
+  isEncrypted: boolean,
+  secret: string
+) {
   if (localStorage.getItem("notes") !== null) {
-    return JSON.parse(
-      CryptoJS.AES.decrypt(
-        localStorage.getItem("notes")!,
-        secret
-      ).toString(CryptoJS.enc.Utf8)!
-    );
+    if (isEncrypted) {
+      return JSON.parse(
+        CryptoJS.AES.decrypt(
+          localStorage.getItem("notes")!,
+          secret
+        ).toString(CryptoJS.enc.Utf8)!
+      );
+    } else {
+      return JSON.parse(localStorage.getItem("notes")!);
+    }
   }
 }

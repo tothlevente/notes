@@ -31,10 +31,11 @@ export default function App() {
   const [showCreateNewNote, setShowCreateNewNote] = useState(false);
   const [notes, setNotes] = useState<NoteProps[]>([]);
   const [secret, setSecret] = useState("secret");
+  const [isEncrypted, setIsEncrypted] = useState(false);
 
   useEffect(() => {
     if (localStorage.getItem("notes") !== null) {
-      setNotes(getLocalStorageItem(secret));
+      setNotes(getLocalStorageItem(isEncrypted, secret));
     }
   }, [setNotes]);
 
@@ -56,6 +57,7 @@ export default function App() {
         }}
       >
         <Header
+          isEncrypted={isEncrypted}
           secret={secret}
           notes={notes}
           setNotes={setNotes}
@@ -63,6 +65,7 @@ export default function App() {
           setShowCreateNewNote={setShowCreateNewNote}
         />
         <NoteStack
+          isEncrypted={isEncrypted}
           secret={secret}
           notes={notes}
           setNotes={setNotes}

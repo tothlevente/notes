@@ -15,6 +15,7 @@ import {
 import { grey, red } from "@mui/material/colors";
 
 export default function DeleteNote({
+  isEncrypted,
   secret,
   openHandleDelete,
   setOpenHandleDelte,
@@ -28,7 +29,7 @@ export default function DeleteNote({
     const updatedNotes = values.filter((note) => note.id !== key);
 
     setNotes(updatedNotes);
-    updateLocalStorageItem(secret, updatedNotes);
+    updateLocalStorageItem(isEncrypted, secret, updatedNotes);
 
     setOpenHandleDelte(false);
   }

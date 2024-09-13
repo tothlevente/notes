@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { grey } from "@mui/material/colors";
 
 export default function EditNote({
+  isEncrypted,
   secret,
   openHandleEdit,
   setOpenHandleEdit,
@@ -41,7 +42,7 @@ export default function EditNote({
       updatedNotes[index].discription = discription;
 
       setNotes(updatedNotes);
-      updateLocalStorageItem(secret, updatedNotes);
+      updateLocalStorageItem(isEncrypted, secret, updatedNotes);
 
       setOpenHandleEdit(false);
     }

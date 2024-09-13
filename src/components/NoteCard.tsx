@@ -15,6 +15,7 @@ import { blue, grey, red } from "@mui/material/colors";
 import { useState } from "react";
 
 export default function NoteCard({
+  isEncrypted,
   secret,
   index,
   title,
@@ -138,6 +139,7 @@ export default function NoteCard({
         discription={note.discription}
       />
       <DeleteNote
+        isEncrypted={isEncrypted}
         secret={secret}
         openHandleDelete={openHandleDelete}
         setOpenHandleDelte={setOpenHandleDelte}
@@ -148,6 +150,7 @@ export default function NoteCard({
         title={note.title}
       />
       <EditNote
+        isEncrypted={isEncrypted}
         secret={secret}
         openHandleEdit={openHandleEdit}
         setOpenHandleEdit={setOpenHandleEdit}
