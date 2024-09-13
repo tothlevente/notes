@@ -54,7 +54,11 @@ export default function App() {
           showCreateNewNote={showCreateNewNote}
           setShowCreateNewNote={setShowCreateNewNote}
         />
-        <NoteStack notes={notes} setNotes={setNotes} />
+        <NoteStack
+          notes={notes}
+          setNotes={setNotes}
+          setShowCreateNewNote={setShowCreateNewNote}
+        />
       </Paper>
       <Footer />
     </ThemeProvider>

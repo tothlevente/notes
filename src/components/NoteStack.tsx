@@ -4,7 +4,11 @@ import NoteCard from "./NoteCard";
 
 import { Box, Button, Stack, Typography } from "@mui/material";
 
-export default function NoteStack({ notes, setNotes }: any) {
+export default function NoteStack({
+  notes,
+  setNotes,
+  setShowCreateNewNote,
+}: any) {
   return (
     <>
       {notes.length === 0 ? (
@@ -30,6 +34,7 @@ export default function NoteStack({ notes, setNotes }: any) {
               variant="contained"
               startIcon={<NoteAddIcon />}
               sx={{ mt: 2 }}
+              onClick={() => setShowCreateNewNote(true)}
             >
               Let's add your first note
             </Button>
