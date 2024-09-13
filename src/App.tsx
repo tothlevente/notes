@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 
 import { ThemeProvider } from "@emotion/react";
 import { createTheme, CssBaseline, Paper } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const theme = createTheme({
   typography: {
@@ -25,6 +25,12 @@ const theme = createTheme({
 export default function App() {
   const [showCreateNewNote, setShowCreateNewNote] = useState(false);
   const [notes, setNotes] = useState<NoteProps[]>([]);
+
+  useEffect(() => {
+    if (localStorage.getItem("notes") !== null) {
+      setNotes(JSON.parse(localStorage.getItem("notes")!));
+    }
+  }, [setNotes]);
 
   return (
     <ThemeProvider theme={theme}>

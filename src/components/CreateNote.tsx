@@ -4,18 +4,14 @@ import NoteDialogActions from "./NoteDialogActions";
 import { Dialog, DialogTitle } from "@mui/material";
 import { useState } from "react";
 
-const dummyTitle = "Lorem ipsum dolor sit amet";
-const dummyDiscription =
-  "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. ";
-
 export default function CreateNote({
   notes,
   setNotes,
   showCreateNewNote,
   setShowCreateNewNote,
 }: any) {
-  const [title, setTitle] = useState(dummyTitle);
-  const [discription, setDescription] = useState(dummyDiscription);
+  const [title, setTitle] = useState("");
+  const [discription, setDescription] = useState("");
 
   function handleClose() {
     setTitle("");
@@ -32,6 +28,18 @@ export default function CreateNote({
         discription: discription,
       },
     ]);
+
+    localStorage.setItem(
+      "notes",
+      JSON.stringify([
+        ...notes,
+        {
+          id: Math.round(Math.random() * 10000000),
+          title: title,
+          discription: discription,
+        },
+      ])
+    );
 
     setTitle("");
     setDescription("");

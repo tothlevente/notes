@@ -1,5 +1,5 @@
-import BlockIcon from "@mui/icons-material/Block";
 import DeleteIcon from "@mui/icons-material/Delete";
+import BlockIcon from "@mui/icons-material/Block";
 
 import {
   Button,
@@ -7,6 +7,7 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  Typography,
 } from "@mui/material";
 
 export default function DeleteNote({
@@ -22,6 +23,7 @@ export default function DeleteNote({
     const update = values.filter((note) => note.id !== key);
 
     setNotes(update);
+    localStorage.setItem("notes", JSON.stringify(update));
     setShowHandleDelte(false);
   }
 
@@ -44,7 +46,15 @@ export default function DeleteNote({
         Delete note
       </DialogTitle>
       <DialogContent sx={{ marginTop: "12px", marginBottom: "12px" }}>
-        Are you sure to delete the {title} note?
+        <Typography>
+          Are you sure to delete the{" "}
+          <b>
+            {title.length < 25
+              ? title
+              : title.substring(0, 25) + "..."}{" "}
+          </b>
+          note?
+        </Typography>
       </DialogContent>
       <DialogActions sx={{ m: 1, p: 1 }}>
         <Button
