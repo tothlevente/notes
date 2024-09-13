@@ -1,34 +1,67 @@
+import NoteAddIcon from "@mui/icons-material/NoteAdd";
 import NoteProps from "../interfaces/NoteProps";
 import NoteCard from "./NoteCard";
 
-import { Stack } from "@mui/material";
+import { Box, Button, Stack, Typography } from "@mui/material";
 
 export default function NoteStack({ notes, setNotes }: any) {
   return (
-    <Stack
-      useFlexGap
-      direction="row"
-      spacing={{ xs: 1, sm: 2 }}
-      sx={{
-        m: 2,
-        justifyContent: "center",
-        flexWrap: "wrap",
-      }}
-    >
-      {notes.map((note: NoteProps, index: number) => {
-        return (
-          <div key={index}>
-            <NoteCard
-              index={index}
-              title={note.title}
-              discription={note.discription}
-              note={note}
-              notes={notes}
-              setNotes={setNotes}
-            />
+    <>
+      {notes.length === 0 ? (
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          minHeight="40vh"
+          marginLeft="10px"
+          marginRight="10px"
+        >
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <Typography variant="h4" sx={{ textAlign: "center" }}>
+              You don't have any notes yet!
+            </Typography>
+            <Button
+              variant="contained"
+              startIcon={<NoteAddIcon />}
+              sx={{ mt: 2 }}
+            >
+              Let's add your first note
+            </Button>
           </div>
-        );
-      })}
-    </Stack>
+        </Box>
+      ) : (
+        <Stack
+          useFlexGap
+          direction="row"
+          spacing={{ xs: 1, sm: 2 }}
+          sx={{
+            m: 2,
+            justifyContent: "center",
+            flexWrap: "wrap",
+          }}
+        >
+          {notes.map((note: NoteProps, index: number) => {
+            return (
+              <div key={index}>
+                <NoteCard
+                  index={index}
+                  title={note.title}
+                  discription={note.discription}
+                  note={note}
+                  notes={notes}
+                  setNotes={setNotes}
+                />
+              </div>
+            );
+          })}
+        </Stack>
+      )}
+    </>
   );
 }
