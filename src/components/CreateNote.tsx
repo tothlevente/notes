@@ -1,11 +1,11 @@
-import setLocalStorageItem from "../controllers/setLocalStorageItem";
+import setNotesLocalStorageItem from "../controllers/setNotesLocalStorageItem";
 import NoteDialogContent from "./NoteDialogContent";
 import NoteDialogActions from "./NoteDialogActions";
 import CloseIcon from "@mui/icons-material/Close";
 
 import { Dialog, DialogTitle, IconButton } from "@mui/material";
-import { useState } from "react";
 import { grey } from "@mui/material/colors";
+import { useState } from "react";
 
 //FIXME !!!
 const dummyTitle = "Lorem ipsum dolor sit amet";
@@ -17,8 +17,8 @@ export default function CreateNote({
   secret,
   notes,
   setNotes,
-  showCreateNewNote,
-  setShowCreateNewNote,
+  openCreateNewNote,
+  setOpenCreateNewNote,
 }: any) {
   const [title, setTitle] = useState(dummyTitle);
   const [discription, setDescription] = useState(dummyDiscription);
@@ -26,7 +26,7 @@ export default function CreateNote({
   function handleClose() {
     setTitle("");
     setDescription("");
-    setShowCreateNewNote(false);
+    setOpenCreateNewNote(false);
   }
 
   function handleSave() {
@@ -39,7 +39,7 @@ export default function CreateNote({
       },
     ]);
 
-    setLocalStorageItem(
+    setNotesLocalStorageItem(
       isEncrypted,
       secret,
       notes,
@@ -50,12 +50,12 @@ export default function CreateNote({
     setTitle("");
     setDescription("");
 
-    setShowCreateNewNote(false);
+    setOpenCreateNewNote(false);
   }
 
   return (
     <Dialog
-      open={showCreateNewNote}
+      open={openCreateNewNote}
       onClose={handleClose}
       maxWidth={"sm"}
       fullWidth

@@ -1,7 +1,7 @@
 import NoteProps from "../interfaces/NoteProps";
 import CryptoJS from "crypto-js";
 
-export default function updateLocalStorageItem(
+export default function updateNotesLocalStorageItem(
   isEncrypted: boolean,
   secret: string,
   updatedNotes: Array<NoteProps>

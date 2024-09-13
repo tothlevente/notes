@@ -1,6 +1,6 @@
 import CryptoJS from "crypto-js";
 
-export default function getLocalStorageItem(
+export default function getNotesLocalStorageItem(
   isEncrypted: boolean,
   secret: string
 ) {

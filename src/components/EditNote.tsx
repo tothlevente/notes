@@ -1,11 +1,11 @@
-import updateLocalStorageItem from "../controllers/updateLocalStorageItem";
+import updateNotesLocalStorageItem from "../controllers/updateNotesLocalStorageItem";
 import NoteDialogContent from "./NoteDialogContent";
 import NoteDialogActions from "./NoteDialogActions";
 import CloseIcon from "@mui/icons-material/Close";
 
 import { Dialog, DialogTitle, IconButton } from "@mui/material";
-import { useEffect, useState } from "react";
 import { grey } from "@mui/material/colors";
+import { useEffect, useState } from "react";
 
 export default function EditNote({
   isEncrypted,
@@ -42,7 +42,7 @@ export default function EditNote({
       updatedNotes[index].discription = discription;
 
       setNotes(updatedNotes);
-      updateLocalStorageItem(isEncrypted, secret, updatedNotes);
+      updateNotesLocalStorageItem(isEncrypted, secret, updatedNotes);
 
       setOpenHandleEdit(false);
     }

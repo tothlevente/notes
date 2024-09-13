@@ -1,13 +1,14 @@
-import getLocalStorageItem from "./controllers/getLocalStorageItem";
+import getNotesLocalStorageItem from "./controllers/getNotesLocalStorageItem";
+import WelcomeDialog from "./components/WelcomeDialog";
 import NoteStack from "./components/NoteStack";
 import NoteProps from "./interfaces/NoteProps";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 import { createTheme, CssBaseline, Paper } from "@mui/material";
+import { blue, grey } from "@mui/material/colors";
 import { ThemeProvider } from "@emotion/react";
 import { useEffect, useState } from "react";
-import { blue, grey } from "@mui/material/colors";
 
 const theme = createTheme({
   typography: {
@@ -28,14 +29,16 @@ const theme = createTheme({
 });
 
 export default function App() {
-  const [showCreateNewNote, setShowCreateNewNote] = useState(false);
+  const [openWelcomeDialog, setOpenWelcomeDialog] = useState(false);
+  const [openCreateNewNote, setOpenCreateNewNote] = useState(false);
+
   const [notes, setNotes] = useState<NoteProps[]>([]);
-  const [secret, setSecret] = useState("secret");
+  const [secret, setSecret] = useState("");
   const [isEncrypted, setIsEncrypted] = useState(false);
 
   useEffect(() => {
     if (localStorage.getItem("notes") !== null) {
-      setNotes(getLocalStorageItem(isEncrypted, secret));
+      setNotes(getNotesLocalStorageItem(isEncrypted, secret));
     }
   }, [setNotes]);
 
@@ -61,15 +64,21 @@ export default function App() {
           secret={secret}
           notes={notes}
           setNotes={setNotes}
-          showCreateNewNote={showCreateNewNote}
-          setShowCreateNewNote={setShowCreateNewNote}
+          openCreateNewNote={openCreateNewNote}
+          setOpenCreateNewNote={setOpenCreateNewNote}
+        />
+        <WelcomeDialog
+          openWelcomeDialog={openWelcomeDialog}
+          setOpenWelcomeDialog={setOpenWelcomeDialog}
+          setIsEncrypted={setIsEncrypted}
+          setSecret={setSecret}
         />
         <NoteStack
           isEncrypted={isEncrypted}
           secret={secret}
           notes={notes}
           setNotes={setNotes}
-          setShowCreateNewNote={setShowCreateNewNote}
+          setOpenCreateNewNote={setOpenCreateNewNote}
         />
       </Paper>
       <Footer />

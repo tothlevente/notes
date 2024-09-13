@@ -17,8 +17,8 @@ export default function Header({
   secret,
   notes,
   setNotes,
-  showCreateNewNote,
-  setShowCreateNewNote,
+  openCreateNewNote,
+  setOpenCreateNewNote,
 }: any) {
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -27,8 +27,8 @@ export default function Header({
         secret={secret}
         notes={notes}
         setNotes={setNotes}
-        showCreateNewNote={showCreateNewNote}
-        setShowCreateNewNote={setShowCreateNewNote}
+        openCreateNewNote={openCreateNewNote}
+        setOpenCreateNewNote={setOpenCreateNewNote}
       />
       <AppBar position="static">
         <Toolbar>
@@ -48,7 +48,7 @@ export default function Header({
               aria-label="create new note"
               sx={{ mr: 2 }}
               onClick={() => {
-                setShowCreateNewNote(true);
+                setOpenCreateNewNote(true);
               }}
             >
               <NoteAddIcon />

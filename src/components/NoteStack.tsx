@@ -9,7 +9,7 @@ export default function NoteStack({
   secret,
   notes,
   setNotes,
-  setShowCreateNewNote,
+  setOpenCreateNewNote,
 }: any) {
   return (
     <>
@@ -36,7 +36,7 @@ export default function NoteStack({
               variant="contained"
               startIcon={<NoteAddIcon />}
               sx={{ mt: 2 }}
-              onClick={() => setShowCreateNewNote(true)}
+              onClick={() => setOpenCreateNewNote(true)}
             >
               Let's add your first note
             </Button>

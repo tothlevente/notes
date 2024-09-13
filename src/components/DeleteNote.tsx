@@ -1,4 +1,4 @@
-import updateLocalStorageItem from "../controllers/updateLocalStorageItem";
+import updateNotesLocalStorageItem from "../controllers/updateNotesLocalStorageItem";
 import DeleteIcon from "@mui/icons-material/Delete";
 import BlockIcon from "@mui/icons-material/Block";
 import CloseIcon from "@mui/icons-material/Close";
@@ -12,6 +12,7 @@ import {
   IconButton,
   Typography,
 } from "@mui/material";
+
 import { grey, red } from "@mui/material/colors";
 
 export default function DeleteNote({
@@ -29,7 +30,7 @@ export default function DeleteNote({
     const updatedNotes = values.filter((note) => note.id !== key);
 
     setNotes(updatedNotes);
-    updateLocalStorageItem(isEncrypted, secret, updatedNotes);
+    updateNotesLocalStorageItem(isEncrypted, secret, updatedNotes);
 
     setOpenHandleDelte(false);
   }
