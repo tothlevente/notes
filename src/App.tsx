@@ -1,5 +1,6 @@
 import getNotesLocalStorageItem from "./controllers/getNotesLocalStorageItem";
 import EncryptionDialog from "./components/EncryptionDialog";
+import DecryptionDialog from "./components/DecryptionDialog";
 import WelcomeDialog from "./components/WelcomeDialog";
 import NoteStack from "./components/NoteStack";
 import NoteProps from "./interfaces/NoteProps";
@@ -31,6 +32,7 @@ const theme = createTheme({
 
 export default function App() {
   const [openEncryptionDialog, setOpenEncryptionDialog] = useState(false);
+  const [openDecryptionDialog, setOpenDecryptionDialog] = useState(false);
   const [openWelcomeDialog, setOpenWelcomeDialog] = useState(true);
   const [openCreateNewNote, setOpenCreateNewNote] = useState(false);
   const [notes, setNotes] = useState<NoteProps[]>([]);
@@ -44,8 +46,18 @@ export default function App() {
   }, [setOpenWelcomeDialog]);
 
   useEffect(() => {
+    if (JSON.parse(localStorage.getItem("encryption")!) === true) {
+      setOpenDecryptionDialog(true);
+    }
+  }, [setIsEncrypted]);
+
+  useEffect(() => {
     if (localStorage.getItem("notes") !== null) {
-      setNotes(getNotesLocalStorageItem(isEncrypted, secret));
+      if (JSON.parse(localStorage.getItem("encryption")!) === true) {
+        setOpenDecryptionDialog(true);
+      } else {
+        setNotes(getNotesLocalStorageItem(isEncrypted, secret));
+      }
     }
   }, [setNotes]);
 
@@ -84,6 +96,13 @@ export default function App() {
           setOpenEncryptionDialog={setOpenEncryptionDialog}
           setIsEncrypted={setIsEncrypted}
           setSecret={setSecret}
+        />
+        <DecryptionDialog
+          openDecryptionDialog={openDecryptionDialog}
+          setOpenDecryptionDialog={setOpenDecryptionDialog}
+          setIsEncrypted={setIsEncrypted}
+          setSecret={setSecret}
+          setNotes={setNotes}
         />
         <NoteStack
           isEncrypted={isEncrypted}
