@@ -1,3 +1,5 @@
+import VerifiedIcon from "@mui/icons-material/Verified";
+
 import { grey } from "@mui/material/colors";
 
 import {
@@ -33,9 +35,12 @@ export default function WelcomeDialog({
         bgcolor={grey[200]}
         sx={{ m: 0, p: 2, fontWeight: "bold" }}
       >
-        Welcome here! 👋
+        Welcome in the notes! 👋
       </DialogTitle>
       <DialogContent dividers>
+        <Typography sx={{ marginBottom: 2 }}>
+          In the notes website you can save, edit and delete notes. 📝
+        </Typography>
         <Typography sx={{ marginBottom: 2 }}>
           This website is under{" "}
           <a
@@ -66,13 +71,15 @@ export default function WelcomeDialog({
         <Typography sx={{ marginBottom: 2 }}>
           You accept this when you use the website.
         </Typography>
-        <Typography>Thank you for visiting!</Typography>
+        <Typography sx={{ fontWeight: "bold" }}>
+          Thank you for visiting!
+        </Typography>
       </DialogContent>
       <DialogActions>
         <Button
           onClick={handleClose}
           variant="contained"
-          sx={{ backgroundColor: grey[900] }}
+          startIcon={<VerifiedIcon />}
         >
           Agree
         </Button>

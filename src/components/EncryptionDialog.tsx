@@ -61,8 +61,8 @@ export default function EncryptionDialog({
       </DialogTitle>
       <DialogContent dividers>
         <Typography sx={{ marginBottom: 2 }}>
-          If you want your notes to be saved encrypted, please enter a
-          password. If you don't encrypt it, anyone can read your notes.
+          If you want you can encrypt your notes. This will protect your
+          notes because nobody can see, edit or delete it except you.
         </Typography>
         <TextField
           sx={{ marginBottom: 2 }}
@@ -78,8 +78,7 @@ export default function EncryptionDialog({
           severity="warning"
           sx={{ marginBottom: 2 }}
         >
-          Don't forget your password because you won't be able to view and
-          restore your notes.
+          Don't forget your password because it not possible to restore it.
         </Alert>
       </DialogContent>
       <DialogActions>
@@ -97,7 +96,7 @@ export default function EncryptionDialog({
           disabled={password.length <= 0}
           startIcon={<LockIcon />}
         >
-          Save and encrypt
+          Encrypt the notes
         </Button>
       </DialogActions>
     </Dialog>
