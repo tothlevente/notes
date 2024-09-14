@@ -23,6 +23,7 @@ export default function DecryptionDialog({
   setIsEncrypted,
   setSecret,
   setNotes,
+  setIsLoading,
 }: any) {
   const [password, setPassword] = useState("");
   const [isError, setIsError] = useState(false);
@@ -36,6 +37,7 @@ export default function DecryptionDialog({
     if (localStorage.getItem("notes") !== null) {
       try {
         setNotes(getNotesLocalStorageItem(true, password));
+        setIsLoading(false);
         setOpenDecryptionDialog(false);
       } catch {
         setIsError(true);

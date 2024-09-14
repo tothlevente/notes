@@ -21,19 +21,22 @@ export default function EncryptionDialog({
   setOpenEncryptionDialog,
   setIsEncrypted,
   setSecret,
+  setIsLoading,
 }: any) {
   const [password, setPassword] = useState("");
 
   function handleClose() {
     setOpenEncryptionDialog(false);
+    setIsLoading(false);
     localStorage.setItem("encryption", JSON.stringify(false));
+    localStorage.setItem("notes", JSON.stringify([]));
   }
 
   function handleSave() {
     setOpenEncryptionDialog(false);
     setSecret(password);
     setIsEncrypted(true);
-
+    setIsLoading(false);
     localStorage.setItem("encryption", JSON.stringify(true));
     localStorage.setItem(
       "notes",

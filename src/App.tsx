@@ -1,4 +1,5 @@
 import getNotesLocalStorageItem from "./controllers/getNotesLocalStorageItem";
+import CircularProgress from "@mui/material/CircularProgress";
 import EncryptionDialog from "./components/EncryptionDialog";
 import DecryptionDialog from "./components/DecryptionDialog";
 import WelcomeDialog from "./components/WelcomeDialog";
@@ -7,7 +8,7 @@ import NoteProps from "./interfaces/NoteProps";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-import { createTheme, CssBaseline, Paper } from "@mui/material";
+import { Box, createTheme, CssBaseline, Paper } from "@mui/material";
 import { blue, grey } from "@mui/material/colors";
 import { ThemeProvider } from "@emotion/react";
 import { useEffect, useState } from "react";
@@ -33,21 +34,26 @@ const theme = createTheme({
 export default function App() {
   const [openEncryptionDialog, setOpenEncryptionDialog] = useState(false);
   const [openDecryptionDialog, setOpenDecryptionDialog] = useState(false);
-  const [openWelcomeDialog, setOpenWelcomeDialog] = useState(true);
+  const [openWelcomeDialog, setOpenWelcomeDialog] = useState(false);
   const [openCreateNewNote, setOpenCreateNewNote] = useState(false);
   const [notes, setNotes] = useState<NoteProps[]>([]);
   const [secret, setSecret] = useState("");
   const [isEncrypted, setIsEncrypted] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (JSON.parse(localStorage.getItem("welcome")!) === false) {
-      setOpenWelcomeDialog(false);
+    if (JSON.parse(localStorage.getItem("welcome")!) === null) {
+      setOpenWelcomeDialog(true);
     }
   }, [setOpenWelcomeDialog]);
 
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("encryption")!) === true) {
       setOpenDecryptionDialog(true);
+    } else {
+      if (localStorage.getItem("notes") !== null) {
+        setIsLoading(false);
+      }
     }
   }, [setIsEncrypted]);
 
@@ -96,6 +102,7 @@ export default function App() {
           setOpenEncryptionDialog={setOpenEncryptionDialog}
           setIsEncrypted={setIsEncrypted}
           setSecret={setSecret}
+          setIsLoading={setIsLoading}
         />
         <DecryptionDialog
           openDecryptionDialog={openDecryptionDialog}
@@ -103,14 +110,30 @@ export default function App() {
           setIsEncrypted={setIsEncrypted}
           setSecret={setSecret}
           setNotes={setNotes}
+          setIsLoading={setIsLoading}
         />
-        <NoteStack
-          isEncrypted={isEncrypted}
-          secret={secret}
-          notes={notes}
-          setNotes={setNotes}
-          setOpenCreateNewNote={setOpenCreateNewNote}
-        />
+        {isLoading ? (
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              minHeight: "40vh",
+              marginLeft: "10px",
+              marginRight: "10px",
+            }}
+          >
+            <CircularProgress />
+          </Box>
+        ) : (
+          <NoteStack
+            isEncrypted={isEncrypted}
+            secret={secret}
+            notes={notes}
+            setNotes={setNotes}
+            setOpenCreateNewNote={setOpenCreateNewNote}
+          />
+        )}
       </Paper>
       <Footer />
     </ThemeProvider>
