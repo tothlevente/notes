@@ -31,6 +31,8 @@ export default function DeleteNotesDialog({
     } else {
       localStorage.setItem("notes", JSON.stringify([]));
     }
+
+    setOpenDeleteNotesDialog(false);
   }
 
   return (
