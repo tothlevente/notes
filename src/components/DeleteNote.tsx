@@ -3,6 +3,8 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import BlockIcon from "@mui/icons-material/Block";
 import CloseIcon from "@mui/icons-material/Close";
 
+import { grey, red } from "@mui/material/colors";
+
 import {
   Button,
   Dialog,
@@ -12,8 +14,6 @@ import {
   IconButton,
   Typography,
 } from "@mui/material";
-
-import { grey, red } from "@mui/material/colors";
 
 export default function DeleteNote({
   isEncrypted,
@@ -69,9 +69,7 @@ export default function DeleteNote({
         <Typography>
           Are you sure to delete the{" "}
           <b>
-            {title.length < 25
-              ? title
-              : title.substring(0, 25) + "..."}{" "}
+            {title.length < 25 ? title : title.substring(0, 25) + "..."}{" "}
           </b>
           note?
         </Typography>

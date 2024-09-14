@@ -7,11 +7,6 @@ import { Dialog, DialogTitle, IconButton } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import { useState } from "react";
 
-//FIXME !!!
-const dummyTitle = "Lorem ipsum dolor sit amet";
-const dummyDiscription =
-  "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. ";
-
 export default function CreateNote({
   isEncrypted,
   secret,
@@ -20,8 +15,8 @@ export default function CreateNote({
   openCreateNewNote,
   setOpenCreateNewNote,
 }: any) {
-  const [title, setTitle] = useState(dummyTitle);
-  const [discription, setDescription] = useState(dummyDiscription);
+  const [title, setTitle] = useState("");
+  const [discription, setDescription] = useState("");
 
   function handleClose() {
     setTitle("");

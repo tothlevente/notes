@@ -65,9 +65,7 @@ export default function NoteCard({
               >
                 <NotesIcon />
               </Avatar>
-              {title.length < 30
-                ? title
-                : title.substring(0, 30) + "..."}
+              {title.length < 30 ? title : title.substring(0, 30) + "..."}
             </Typography>
             <Typography
               variant="body2"

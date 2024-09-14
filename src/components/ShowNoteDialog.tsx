@@ -1,5 +1,7 @@
 import CloseIcon from "@mui/icons-material/Close";
 
+import { grey } from "@mui/material/colors";
+
 import {
   Dialog,
   DialogContent,
@@ -7,7 +9,6 @@ import {
   IconButton,
   Typography,
 } from "@mui/material";
-import { grey } from "@mui/material/colors";
 
 export default function ShowNoteDialog({
   openShowNoteDialog,

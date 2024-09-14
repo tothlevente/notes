@@ -15,9 +15,7 @@ export default function NoteDialogActions({
         variant="contained"
         onClick={handleSave}
         startIcon={<SaveIcon />}
-        disabled={
-          titleInput.length < 1 || discriptionInput.length < 1
-        }
+        disabled={titleInput.length < 1 || discriptionInput.length < 1}
       >
         Save
       </Button>

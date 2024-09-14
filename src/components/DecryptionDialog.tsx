@@ -43,7 +43,7 @@ export default function DecryptionDialog({
     }
   }
 
-  function Error() {
+  function WrongPassword() {
     return (
       <Alert variant="filled" severity="error" sx={{ marginBottom: 2 }}>
         You entered an incorrect password.
@@ -161,10 +161,9 @@ export default function DecryptionDialog({
       </DialogTitle>
       <DialogContent dividers>
         <Typography sx={{ marginBottom: 2 }}>
-          If you want to decrypt your notes please type your given
-          password.
+          If you want to decrypt your notes please type your password.
         </Typography>
-        {isError ? <Error /> : null}
+        {isError ? <WrongPassword /> : null}
         <TextField
           sx={{ marginBottom: 2 }}
           label="Password"
