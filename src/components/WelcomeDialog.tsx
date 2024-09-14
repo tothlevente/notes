@@ -39,10 +39,10 @@ export default function WelcomeDialog({
       </DialogTitle>
       <DialogContent dividers>
         <Typography sx={{ marginBottom: 2 }}>
-          In the notes website you can save, edit and delete notes. 📝
+          In this web application you can save, edit and delete notes. 📝
         </Typography>
         <Typography sx={{ marginBottom: 2 }}>
-          This website is under{" "}
+          This web application is under{" "}
           <a
             className="link"
             target="_blank"
@@ -52,8 +52,8 @@ export default function WelcomeDialog({
           >
             MIT license
           </a>
-          , ad-free and does not use cookies only local storage for save a
-          notes information and manages dialogs to improve your experience.
+          , ad-free and does not use cookies only local storage for save a notes
+          information and manages dialogs to improve your experience.
         </Typography>
         <Typography sx={{ marginBottom: 2 }}>
           For more information please visit the project{" "}
