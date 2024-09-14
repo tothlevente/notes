@@ -1,7 +1,9 @@
 import getNotesLocalStorageItem from "../controllers/getNotesLocalStorageItem";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
+import BlockIcon from "@mui/icons-material/Block";
 
-import { grey } from "@mui/material/colors";
+import { grey, red } from "@mui/material/colors";
 import { useState } from "react";
 
 import {
@@ -24,6 +26,8 @@ export default function DecryptionDialog({
 }: any) {
   const [password, setPassword] = useState("");
   const [isError, setIsError] = useState(false);
+  const [openForgotPassword, setOpenForgotPassword] = useState(false);
+  const [openFactoryReset, setOpenFactoryReset] = useState(false);
 
   function handleSave() {
     setIsEncrypted(true);
@@ -47,6 +51,104 @@ export default function DecryptionDialog({
     );
   }
 
+  function ForgotPassword() {
+    return (
+      <Dialog
+        open={openForgotPassword}
+        onClose={() => setOpenForgotPassword(false)}
+        maxWidth={"sm"}
+        fullWidth
+      >
+        <DialogTitle
+          variant="h6"
+          color={grey[900]}
+          bgcolor={grey[200]}
+          sx={{ m: 0, p: 2, fontWeight: "bold" }}
+        >
+          Forgot your password?
+        </DialogTitle>
+        <DialogContent dividers>
+          If you have forgotten your password, you can only use a factory
+          reset. This will delete your all notes in this browser. You
+          cannot undo this action later.
+        </DialogContent>
+        <DialogActions>
+          <Button
+            variant="contained"
+            sx={{ backgroundColor: red[500] }}
+            onClick={() => setOpenFactoryReset(true)}
+            startIcon={<DeleteForeverIcon />}
+          >
+            Factory reset
+          </Button>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={() => setOpenForgotPassword(false)}
+            startIcon={<BlockIcon />}
+          >
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
+    );
+  }
+
+  function FactoryReset() {
+    function handleFactoryReset() {
+      localStorage.clear();
+      window.location.reload();
+    }
+
+    return (
+      <Dialog
+        open={openFactoryReset}
+        onClose={() => {
+          setOpenFactoryReset(false);
+          setOpenForgotPassword(false);
+        }}
+        maxWidth={"sm"}
+        fullWidth
+      >
+        <DialogTitle
+          variant="h6"
+          color={grey[900]}
+          bgcolor={grey[200]}
+          sx={{ m: 0, p: 2, fontWeight: "bold" }}
+        >
+          Are you sure?
+        </DialogTitle>
+        <DialogContent dividers>
+          <Alert variant="filled" severity="warning">
+            Factory reset will delete your all notes in this browser! You
+            cannot undo this action later!
+          </Alert>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            variant="contained"
+            sx={{ backgroundColor: red[500] }}
+            onClick={handleFactoryReset}
+            startIcon={<DeleteForeverIcon />}
+          >
+            Factory reset
+          </Button>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={() => {
+              setOpenFactoryReset(false);
+              setOpenForgotPassword(false);
+            }}
+            startIcon={<BlockIcon />}
+          >
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
+    );
+  }
+
   return (
     <Dialog open={openDecryptionDialog} maxWidth={"sm"} fullWidth>
       <DialogTitle
@@ -55,7 +157,7 @@ export default function DecryptionDialog({
         bgcolor={grey[200]}
         sx={{ m: 0, p: 2, fontWeight: "bold" }}
       >
-        Decrypt you notes! 🔓️
+        Decrypt your notes! 🔓️
       </DialogTitle>
       <DialogContent dividers>
         <Typography sx={{ marginBottom: 2 }}>
@@ -74,6 +176,15 @@ export default function DecryptionDialog({
         />
       </DialogContent>
       <DialogActions>
+        <ForgotPassword />
+        <FactoryReset />
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={() => setOpenForgotPassword(true)}
+        >
+          Forgot password?
+        </Button>
         <Button
           onClick={handleSave}
           variant="contained"

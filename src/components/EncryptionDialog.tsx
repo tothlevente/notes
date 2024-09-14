@@ -1,5 +1,6 @@
 import BlockIcon from "@mui/icons-material/Block";
 import LockIcon from "@mui/icons-material/Lock";
+import CryptoJS from "crypto-js";
 
 import { grey } from "@mui/material/colors";
 import { useState } from "react";
@@ -32,7 +33,12 @@ export default function EncryptionDialog({
     setOpenEncryptionDialog(false);
     setSecret(password);
     setIsEncrypted(true);
+
     localStorage.setItem("encryption", JSON.stringify(true));
+    localStorage.setItem(
+      "notes",
+      CryptoJS.AES.encrypt(JSON.stringify([]), password).toString()
+    );
   }
 
   return (
@@ -48,7 +54,7 @@ export default function EncryptionDialog({
         bgcolor={grey[200]}
         sx={{ m: 0, p: 2, fontWeight: "bold" }}
       >
-        Encrypt you notes! 🔐
+        Encrypt your notes! 🔐
       </DialogTitle>
       <DialogContent dividers>
         <Typography sx={{ marginBottom: 2 }}>
@@ -69,9 +75,8 @@ export default function EncryptionDialog({
           severity="warning"
           sx={{ marginBottom: 2 }}
         >
-          Don't forget or save your password in a secret place, because if
-          you forget it, you won't be able to view and it won't be possible
-          to restore your notes.
+          Don't forget your password because you won't be able to view and
+          restore your notes.
         </Alert>
       </DialogContent>
       <DialogActions>
