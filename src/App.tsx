@@ -1,4 +1,5 @@
 import getNotesLocalStorageItem from "./controllers/getNotesLocalStorageItem";
+import EncryptionDialog from "./components/EncryptionDialog";
 import WelcomeDialog from "./components/WelcomeDialog";
 import NoteStack from "./components/NoteStack";
 import NoteProps from "./interfaces/NoteProps";
@@ -29,6 +30,7 @@ const theme = createTheme({
 });
 
 export default function App() {
+  const [openEncryptionDialog, setOpenEncryptionDialog] = useState(false);
   const [openWelcomeDialog, setOpenWelcomeDialog] = useState(true);
   const [openCreateNewNote, setOpenCreateNewNote] = useState(false);
   const [notes, setNotes] = useState<NoteProps[]>([]);
@@ -75,6 +77,11 @@ export default function App() {
         <WelcomeDialog
           openWelcomeDialog={openWelcomeDialog}
           setOpenWelcomeDialog={setOpenWelcomeDialog}
+          setOpenEncryptionDialog={setOpenEncryptionDialog}
+        />
+        <EncryptionDialog
+          openEncryptionDialog={openEncryptionDialog}
+          setOpenEncryptionDialog={setOpenEncryptionDialog}
           setIsEncrypted={setIsEncrypted}
           setSecret={setSecret}
         />

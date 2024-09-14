@@ -1,6 +1,8 @@
 # Notes 📝
 
-In this application you can save, edit and delete notes. The notes are stored encrypted.
+In this application you can save, edit and delete notes.
+
+The note can also be stored encrypted in your browser.
 
 ## Available scripts:
 
