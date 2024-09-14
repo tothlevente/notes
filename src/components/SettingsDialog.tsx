@@ -68,10 +68,12 @@ export default function SettingsDialog({
           Delete notes
         </Typography>
         <Typography color={red[600]} sx={{ marginBottom: "5px" }}>
-          This will delete your all notes in this browser
-          {notes.length <= 0 ? " but you have no notes yet." : "."} You cannot
-          undo this action later.
+          {notes.length <= 0
+            ? "This will delete your all notes in this browser but you have no note yet."
+            : "This will delete your all notes in this browser."}{" "}
+          You cannot undo this action later.
         </Typography>
+
         <Button
           variant="contained"
           sx={{ backgroundColor: red[500] }}
