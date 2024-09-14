@@ -2,6 +2,7 @@ import getNotesLocalStorageItem from "./controllers/getNotesLocalStorageItem";
 import CircularProgress from "@mui/material/CircularProgress";
 import EncryptionDialog from "./components/EncryptionDialog";
 import DecryptionDialog from "./components/DecryptionDialog";
+import SettingsDialog from "./components/SettingsDialog";
 import WelcomeDialog from "./components/WelcomeDialog";
 import NoteStack from "./components/NoteStack";
 import NoteProps from "./interfaces/NoteProps";
@@ -34,6 +35,7 @@ const theme = createTheme({
 export default function App() {
   const [openEncryptionDialog, setOpenEncryptionDialog] = useState(false);
   const [openDecryptionDialog, setOpenDecryptionDialog] = useState(false);
+  const [openSettingsDialog, setOpenSettingsDialog] = useState(false);
   const [openWelcomeDialog, setOpenWelcomeDialog] = useState(false);
   const [openCreateNewNote, setOpenCreateNewNote] = useState(false);
   const [notes, setNotes] = useState<NoteProps[]>([]);
@@ -67,9 +69,44 @@ export default function App() {
     }
   }, [setNotes]);
 
+  function Dialogs() {
+    return (
+      <>
+        <WelcomeDialog
+          openWelcomeDialog={openWelcomeDialog}
+          setOpenWelcomeDialog={setOpenWelcomeDialog}
+          setOpenEncryptionDialog={setOpenEncryptionDialog}
+        />
+        <EncryptionDialog
+          openEncryptionDialog={openEncryptionDialog}
+          setOpenEncryptionDialog={setOpenEncryptionDialog}
+          setIsEncrypted={setIsEncrypted}
+          setSecret={setSecret}
+          setIsLoading={setIsLoading}
+        />
+        <DecryptionDialog
+          openDecryptionDialog={openDecryptionDialog}
+          setOpenDecryptionDialog={setOpenDecryptionDialog}
+          setIsEncrypted={setIsEncrypted}
+          setSecret={setSecret}
+          setNotes={setNotes}
+          setIsLoading={setIsLoading}
+        />
+        <SettingsDialog
+          openSettingsDialog={openSettingsDialog}
+          setOpenSettingsDialog={setOpenSettingsDialog}
+          notes={notes}
+          setNotes={setNotes}
+          secret={secret}
+        />
+      </>
+    );
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <Dialogs />
       <Paper
         elevation={0}
         square
@@ -91,26 +128,7 @@ export default function App() {
           setNotes={setNotes}
           openCreateNewNote={openCreateNewNote}
           setOpenCreateNewNote={setOpenCreateNewNote}
-        />
-        <WelcomeDialog
-          openWelcomeDialog={openWelcomeDialog}
-          setOpenWelcomeDialog={setOpenWelcomeDialog}
-          setOpenEncryptionDialog={setOpenEncryptionDialog}
-        />
-        <EncryptionDialog
-          openEncryptionDialog={openEncryptionDialog}
-          setOpenEncryptionDialog={setOpenEncryptionDialog}
-          setIsEncrypted={setIsEncrypted}
-          setSecret={setSecret}
-          setIsLoading={setIsLoading}
-        />
-        <DecryptionDialog
-          openDecryptionDialog={openDecryptionDialog}
-          setOpenDecryptionDialog={setOpenDecryptionDialog}
-          setIsEncrypted={setIsEncrypted}
-          setSecret={setSecret}
-          setNotes={setNotes}
-          setIsLoading={setIsLoading}
+          setOpenSettingsDialog={setOpenSettingsDialog}
         />
         {isLoading ? (
           <Box

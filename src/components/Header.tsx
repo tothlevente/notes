@@ -1,3 +1,4 @@
+import SettingsIcon from "@mui/icons-material/Settings";
 import NoteAddIcon from "@mui/icons-material/NoteAdd";
 import CreateNote from "./CreateNote";
 import Logo from "./Logo";
@@ -19,6 +20,7 @@ export default function Header({
   setNotes,
   openCreateNewNote,
   setOpenCreateNewNote,
+  setOpenSettingsDialog,
 }: any) {
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -47,11 +49,21 @@ export default function Header({
               color="inherit"
               aria-label="create new note"
               sx={{ mr: 2 }}
-              onClick={() => {
-                setOpenCreateNewNote(true);
-              }}
+              onClick={() => setOpenCreateNewNote(true)}
             >
               <NoteAddIcon />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Open settings">
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="open settings"
+              sx={{ mr: 2 }}
+              onClick={() => setOpenSettingsDialog(true)}
+            >
+              <SettingsIcon />
             </IconButton>
           </Tooltip>
         </Toolbar>

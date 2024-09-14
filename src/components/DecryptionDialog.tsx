@@ -1,6 +1,7 @@
 import getNotesLocalStorageItem from "../controllers/getNotesLocalStorageItem";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
+import FactoryResetDialog from "./FactoryResetDialog";
 import BlockIcon from "@mui/icons-material/Block";
 
 import { grey, red } from "@mui/material/colors";
@@ -28,7 +29,7 @@ export default function DecryptionDialog({
   const [password, setPassword] = useState("");
   const [isError, setIsError] = useState(false);
   const [openForgotPassword, setOpenForgotPassword] = useState(false);
-  const [openFactoryReset, setOpenFactoryReset] = useState(false);
+  const [openFactoryResetDialog, setOpenFactoryResetDialog] = useState(false);
 
   function handleSave() {
     setIsEncrypted(true);
@@ -53,7 +54,7 @@ export default function DecryptionDialog({
     );
   }
 
-  function ForgotPassword() {
+  function ForgotPasswordDialog() {
     return (
       <Dialog
         open={openForgotPassword}
@@ -70,15 +71,19 @@ export default function DecryptionDialog({
           Forgot your password?
         </DialogTitle>
         <DialogContent dividers>
-          If you have forgotten your password, you can only use a factory
-          reset. This will delete your all notes in this browser. You
-          cannot undo this action later.
+          If you have forgotten your password, you can only use a factory reset.
+          This will delete your all notes in this browser and restore everything
+          to factory settings. You cannot undo this action later.
         </DialogContent>
         <DialogActions>
+          <FactoryResetDialog
+            openFactoryResetDialog={openFactoryResetDialog}
+            setOpenFactoryResetDialog={setOpenFactoryResetDialog}
+          />
           <Button
             variant="contained"
             sx={{ backgroundColor: red[500] }}
-            onClick={() => setOpenFactoryReset(true)}
+            onClick={() => setOpenFactoryResetDialog(true)}
             startIcon={<DeleteForeverIcon />}
           >
             Factory reset
@@ -87,61 +92,6 @@ export default function DecryptionDialog({
             variant="contained"
             color="secondary"
             onClick={() => setOpenForgotPassword(false)}
-            startIcon={<BlockIcon />}
-          >
-            Close
-          </Button>
-        </DialogActions>
-      </Dialog>
-    );
-  }
-
-  function FactoryReset() {
-    function handleFactoryReset() {
-      localStorage.clear();
-      window.location.reload();
-    }
-
-    return (
-      <Dialog
-        open={openFactoryReset}
-        onClose={() => {
-          setOpenFactoryReset(false);
-          setOpenForgotPassword(false);
-        }}
-        maxWidth={"sm"}
-        fullWidth
-      >
-        <DialogTitle
-          variant="h6"
-          color={grey[900]}
-          bgcolor={grey[200]}
-          sx={{ m: 0, p: 2, fontWeight: "bold" }}
-        >
-          Are you sure?
-        </DialogTitle>
-        <DialogContent dividers>
-          <Alert variant="filled" severity="warning">
-            Factory reset will delete your all notes in this browser! You
-            cannot undo this action later!
-          </Alert>
-        </DialogContent>
-        <DialogActions>
-          <Button
-            variant="contained"
-            sx={{ backgroundColor: red[500] }}
-            onClick={handleFactoryReset}
-            startIcon={<DeleteForeverIcon />}
-          >
-            Factory reset
-          </Button>
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={() => {
-              setOpenFactoryReset(false);
-              setOpenForgotPassword(false);
-            }}
             startIcon={<BlockIcon />}
           >
             Close
@@ -177,8 +127,7 @@ export default function DecryptionDialog({
         />
       </DialogContent>
       <DialogActions>
-        <ForgotPassword />
-        <FactoryReset />
+        <ForgotPasswordDialog />
         <Button
           variant="contained"
           color="secondary"
