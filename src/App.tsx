@@ -29,12 +29,17 @@ const theme = createTheme({
 });
 
 export default function App() {
-  const [openWelcomeDialog, setOpenWelcomeDialog] = useState(false);
+  const [openWelcomeDialog, setOpenWelcomeDialog] = useState(true);
   const [openCreateNewNote, setOpenCreateNewNote] = useState(false);
-
   const [notes, setNotes] = useState<NoteProps[]>([]);
   const [secret, setSecret] = useState("");
   const [isEncrypted, setIsEncrypted] = useState(false);
+
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem("welcome")!) === false) {
+      setOpenWelcomeDialog(false);
+    }
+  }, [setOpenWelcomeDialog]);
 
   useEffect(() => {
     if (localStorage.getItem("notes") !== null) {

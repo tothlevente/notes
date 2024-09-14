@@ -9,10 +9,12 @@ export default function WelcomeDialog({
 }: any) {
   function handleClose() {
     setOpenWelcomeDialog(false);
-    setIsEncrypted(false);
+    localStorage.setItem("welcome", JSON.stringify(false));
   }
 
-  function handleSave() {}
+  function handleSave() {
+    setOpenWelcomeDialog(false);
+  }
 
   return (
     <Dialog
