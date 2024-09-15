@@ -10,6 +10,7 @@ import {
   DialogTitle,
   Typography,
 } from "@mui/material";
+import NoteDialogTitle from "./NoteDialogTitle";
 
 export default function WelcomeDialog({
   openWelcomeDialog,
@@ -27,17 +28,11 @@ export default function WelcomeDialog({
       open={openWelcomeDialog}
       onClose={handleClose}
       maxWidth={"sm"}
+      sx={{ borderRadius: "10px" }}
       fullWidth
     >
-      <DialogTitle
-        variant="h6"
-        color={grey[900]}
-        bgcolor={grey[200]}
-        sx={{ m: 0, p: 2, fontWeight: "bold" }}
-      >
-        Welcome in the notes! 👋
-      </DialogTitle>
-      <DialogContent dividers>
+      <NoteDialogTitle title="Welcome in the notes! 👋" />
+      <DialogContent dividers sx={{ textAlign: "center" }}>
         <Typography sx={{ marginBottom: 2 }}>
           In this web application you can save, edit and delete notes. 📝
         </Typography>
@@ -72,10 +67,10 @@ export default function WelcomeDialog({
           You accept this when you use the website.
         </Typography>
         <Typography sx={{ fontWeight: "bold" }}>
-          Thank you for visiting!
+          Thank you for visiting! ✌️
         </Typography>
       </DialogContent>
-      <DialogActions>
+      <DialogActions sx={{ justifyContent: "center" }}>
         <Button
           onClick={handleClose}
           variant="contained"
