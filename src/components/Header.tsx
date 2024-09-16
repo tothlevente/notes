@@ -4,9 +4,8 @@ import HeaderProps from "../interfaces/HeaderProps";
 import CreateNote from "./CreateNote";
 import Logo from "./Logo";
 
-import { Box } from "@mui/system";
-
 import { AppBar, IconButton, Toolbar, Tooltip, Typography } from "@mui/material";
+import { Box } from "@mui/system";
 
 export default function Header({
   isEncrypted,

@@ -11,7 +11,7 @@ export default function NoteDialogActions({
   discriptionInput,
 }: NoteDialogActionsProps) {
   return (
-    <DialogActions sx={{ m: 1, p: 1 }}>
+    <DialogActions sx={{ m: 1, p: 1, justifyContent: "center" }}>
       <Button
         variant="contained"
         onClick={handleSave}

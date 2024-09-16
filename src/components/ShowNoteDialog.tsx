@@ -1,15 +1,8 @@
 import ShowNoteDialogProps from "../interfaces/ShowNoteDialogProps";
 import CloseIcon from "@mui/icons-material/Close";
+import NoteDialogTitle from "./NoteDialogTitle";
 
-import { grey } from "@mui/material/colors";
-
-import {
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  IconButton,
-  Typography,
-} from "@mui/material";
+import { Dialog, DialogContent, IconButton, Typography } from "@mui/material";
 
 export default function ShowNoteDialog({
   openShowNoteDialog,
@@ -28,14 +21,7 @@ export default function ShowNoteDialog({
       maxWidth={"sm"}
       fullWidth
     >
-      <DialogTitle
-        variant="h6"
-        color={grey[900]}
-        bgcolor={grey[200]}
-        sx={{ m: 0, p: 2, fontWeight: "bold" }}
-      >
-        {title}
-      </DialogTitle>
+      <NoteDialogTitle title={title} />
       <IconButton
         aria-label="close"
         onClick={handleClose}
@@ -48,7 +34,7 @@ export default function ShowNoteDialog({
       >
         <CloseIcon />
       </IconButton>
-      <DialogContent dividers>
+      <DialogContent>
         <Typography>{discription}</Typography>
       </DialogContent>
     </Dialog>

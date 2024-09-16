@@ -3,12 +3,12 @@ import EditNoteProps from "../interfaces/EditNoteProps";
 import NoteDialogContent from "./NoteDialogContent";
 import NoteDialogActions from "./NoteDialogActions";
 import CloseIcon from "@mui/icons-material/Close";
+import NoteDialogTitle from "./NoteDialogTitle";
 
-import { Dialog, DialogTitle, IconButton } from "@mui/material";
-import { grey } from "@mui/material/colors";
+import { Dialog, IconButton } from "@mui/material";
 import { useEffect, useState } from "react";
 
-export default function EditNote({
+export default function EditNoteDialog({
   isEncrypted,
   secret,
   openHandleEdit,
@@ -51,13 +51,7 @@ export default function EditNote({
 
   return (
     <Dialog open={openHandleEdit} onClose={handleClose} maxWidth={"sm"} fullWidth>
-      <DialogTitle
-        sx={{ m: 0, p: 2, fontWeight: "bold" }}
-        color={grey[900]}
-        bgcolor={grey[200]}
-      >
-        Edit the note
-      </DialogTitle>
+      <NoteDialogTitle title="Edit this note" />
       <IconButton
         aria-label="close"
         onClick={handleClose}
