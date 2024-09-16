@@ -2,10 +2,20 @@ import setNotesLocalStorageItem from "../controllers/setNotesLocalStorageItem";
 import NoteDialogContent from "./NoteDialogContent";
 import NoteDialogActions from "./NoteDialogActions";
 import CloseIcon from "@mui/icons-material/Close";
+import NoteProps from "../interfaces/NoteProps";
 
 import { Dialog, DialogTitle, IconButton } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import { useState } from "react";
+
+interface CreateNoteProps {
+  isEncrypted: boolean;
+  secret: string;
+  notes: NoteProps[];
+  setNotes: React.Dispatch<React.SetStateAction<NoteProps[]>>;
+  openCreateNewNote: boolean;
+  setOpenCreateNewNote: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
 export default function CreateNote({
   isEncrypted,
@@ -14,17 +24,11 @@ export default function CreateNote({
   setNotes,
   openCreateNewNote,
   setOpenCreateNewNote,
-}: any) {
+}: CreateNoteProps) {
   const [title, setTitle] = useState("");
   const [discription, setDescription] = useState("");
 
-  function handleClose() {
-    setTitle("");
-    setDescription("");
-    setOpenCreateNewNote(false);
-  }
-
-  function handleSave() {
+  const handleSave = () => {
     setNotes([
       ...notes,
       {
@@ -34,19 +38,19 @@ export default function CreateNote({
       },
     ]);
 
-    setNotesLocalStorageItem(
-      isEncrypted,
-      secret,
-      notes,
-      title,
-      discription
-    );
+    setNotesLocalStorageItem(isEncrypted, secret, notes, title, discription);
 
     setTitle("");
     setDescription("");
 
     setOpenCreateNewNote(false);
-  }
+  };
+
+  const handleClose = () => {
+    setTitle("");
+    setDescription("");
+    setOpenCreateNewNote(false);
+  };
 
   return (
     <Dialog

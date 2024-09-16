@@ -1,7 +1,11 @@
 import { DialogTitle } from "@mui/material";
 import { grey } from "@mui/material/colors";
 
-export default function NoteDialogTitle({ title }: { title: string }) {
+interface NoteDialogTitleProps {
+  title: string;
+}
+
+export default function NoteDialogTitle({ title }: NoteDialogTitleProps) {
   return (
     <DialogTitle
       variant="h6"

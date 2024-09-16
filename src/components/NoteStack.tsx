@@ -4,13 +4,21 @@ import NoteCard from "./NoteCard";
 
 import { Box, Button, Stack, Typography } from "@mui/material";
 
+interface NoteStackProps {
+  isEncrypted: boolean;
+  secret: string;
+  notes: NoteProps[];
+  setNotes: React.Dispatch<React.SetStateAction<NoteProps[]>>;
+  setOpenCreateNewNote: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 export default function NoteStack({
   isEncrypted,
   secret,
   notes,
   setNotes,
   setOpenCreateNewNote,
-}: any) {
+}: NoteStackProps) {
   return (
     <>
       {notes.length === 0 ? (

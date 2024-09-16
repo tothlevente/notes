@@ -5,6 +5,7 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import NotesIcon from "@mui/icons-material/Notes";
 import Typography from "@mui/material/Typography";
+import NoteProps from "../interfaces/NoteProps";
 import ShowNoteDialog from "./ShowNoteDialog";
 import DeleteNote from "./DeleteNote";
 import Card from "@mui/material/Card";
@@ -13,6 +14,17 @@ import EditNote from "./EditNote";
 import { Avatar, Box, IconButton } from "@mui/material";
 import { blue, grey, red } from "@mui/material/colors";
 import { useState } from "react";
+
+interface NoteCardProps {
+  isEncrypted: boolean;
+  secret: string;
+  index: number;
+  title: string;
+  discription: string;
+  note: NoteProps;
+  notes: NoteProps[];
+  setNotes: React.Dispatch<React.SetStateAction<NoteProps[]>>;
+}
 
 export default function NoteCard({
   isEncrypted,
@@ -23,7 +35,7 @@ export default function NoteCard({
   note,
   notes,
   setNotes,
-}: any) {
+}: NoteCardProps) {
   const [openHandleDelete, setOpenHandleDelte] = useState(false);
   const [openHandleEdit, setOpenHandleEdit] = useState(false);
   const [openShowNoteDialog, setOpenShowNoteDialog] = useState(false);
@@ -143,7 +155,6 @@ export default function NoteCard({
         setOpenHandleDelte={setOpenHandleDelte}
         notes={notes}
         setNotes={setNotes}
-        index={index}
         id={note.id}
         title={note.title}
       />

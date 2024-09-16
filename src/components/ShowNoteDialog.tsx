@@ -10,12 +10,19 @@ import {
   Typography,
 } from "@mui/material";
 
+interface ShowNoteDialogProps {
+  openShowNoteDialog: boolean;
+  setOpenShowNoteDialog: React.Dispatch<React.SetStateAction<boolean>>;
+  title: string;
+  discription: string;
+}
+
 export default function ShowNoteDialog({
   openShowNoteDialog,
   setOpenShowNoteDialog,
   title,
   discription,
-}: any) {
+}: ShowNoteDialogProps) {
   function handleClose() {
     setOpenShowNoteDialog(false);
   }

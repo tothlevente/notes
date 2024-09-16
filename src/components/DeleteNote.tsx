@@ -2,6 +2,7 @@ import updateNotesLocalStorageItem from "../controllers/updateNotesLocalStorageI
 import DeleteIcon from "@mui/icons-material/Delete";
 import BlockIcon from "@mui/icons-material/Block";
 import CloseIcon from "@mui/icons-material/Close";
+import NoteProps from "../interfaces/NoteProps";
 
 import { grey, red } from "@mui/material/colors";
 
@@ -15,6 +16,17 @@ import {
   Typography,
 } from "@mui/material";
 
+interface DeleteNoteProps {
+  isEncrypted: boolean;
+  secret: string;
+  openHandleDelete: boolean;
+  setOpenHandleDelte: React.Dispatch<React.SetStateAction<boolean>>;
+  notes: NoteProps[];
+  setNotes: React.Dispatch<React.SetStateAction<NoteProps[]>>;
+  id: number;
+  title: string;
+}
+
 export default function DeleteNote({
   isEncrypted,
   secret,
@@ -24,7 +36,7 @@ export default function DeleteNote({
   setNotes,
   id,
   title,
-}: any) {
+}: DeleteNoteProps) {
   function handleDelete(key: number) {
     const values = [...notes];
     const updatedNotes = values.filter((note) => note.id !== key);
@@ -68,9 +80,7 @@ export default function DeleteNote({
       <DialogContent sx={{ marginTop: "12px", marginBottom: "12px" }}>
         <Typography>
           Are you sure to delete the{" "}
-          <b>
-            {title.length < 25 ? title : title.substring(0, 25) + "..."}{" "}
-          </b>
+          <b>{title.length < 25 ? title : title.substring(0, 25) + "..."} </b>
           note?
         </Typography>
       </DialogContent>

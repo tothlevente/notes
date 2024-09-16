@@ -5,13 +5,18 @@ import Logo from "./Logo";
 
 import { Box } from "@mui/system";
 
-import {
-  AppBar,
-  IconButton,
-  Toolbar,
-  Tooltip,
-  Typography,
-} from "@mui/material";
+import { AppBar, IconButton, Toolbar, Tooltip, Typography } from "@mui/material";
+import NoteProps from "../interfaces/NoteProps";
+
+interface HeaderProps {
+  isEncrypted: boolean;
+  secret: string;
+  notes: NoteProps[];
+  setNotes: React.Dispatch<React.SetStateAction<NoteProps[]>>;
+  openCreateNewNote: boolean;
+  setOpenCreateNewNote: React.Dispatch<React.SetStateAction<boolean>>;
+  setOpenSettingsDialog: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
 export default function Header({
   isEncrypted,
@@ -21,7 +26,7 @@ export default function Header({
   openCreateNewNote,
   setOpenCreateNewNote,
   setOpenSettingsDialog,
-}: any) {
+}: HeaderProps) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <CreateNote

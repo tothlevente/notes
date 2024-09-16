@@ -1,12 +1,20 @@
 import { DialogContent, TextField } from "@mui/material";
 
+interface NoteDialogContentProps {
+  disabled?: boolean;
+  titleInput: string;
+  setTitleInput: React.Dispatch<React.SetStateAction<string>>;
+  discriptionInput: string;
+  setDescriptionInput: React.Dispatch<React.SetStateAction<string>>;
+}
+
 export default function NoteDialogContent({
   disabled,
   titleInput,
   setTitleInput,
   discriptionInput,
   setDescriptionInput,
-}: any) {
+}: NoteDialogContentProps) {
   return (
     <DialogContent>
       <div style={{ marginTop: "10px" }}>

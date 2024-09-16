@@ -73,7 +73,7 @@ export default function App() {
     }
   }, [setNotes]);
 
-  function Dialogs() {
+  const Dialogs = () => {
     return (
       <>
         <WelcomeDialog
@@ -105,7 +105,7 @@ export default function App() {
         />
       </>
     );
-  }
+  };
 
   return (
     <ThemeProvider theme={theme}>

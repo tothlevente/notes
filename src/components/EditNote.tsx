@@ -2,10 +2,21 @@ import updateNotesLocalStorageItem from "../controllers/updateNotesLocalStorageI
 import NoteDialogContent from "./NoteDialogContent";
 import NoteDialogActions from "./NoteDialogActions";
 import CloseIcon from "@mui/icons-material/Close";
+import NoteProps from "../interfaces/NoteProps";
 
 import { Dialog, DialogTitle, IconButton } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import { useEffect, useState } from "react";
+
+interface EditNoteProps {
+  isEncrypted: boolean;
+  secret: string;
+  openHandleEdit: boolean;
+  setOpenHandleEdit: React.Dispatch<React.SetStateAction<boolean>>;
+  notes: NoteProps[];
+  setNotes: React.Dispatch<React.SetStateAction<NoteProps[]>>;
+  index: number;
+}
 
 export default function EditNote({
   isEncrypted,
@@ -15,7 +26,7 @@ export default function EditNote({
   notes,
   setNotes,
   index,
-}: any) {
+}: EditNoteProps) {
   const [title, setTitle] = useState("");
   const [discription, setDiscription] = useState("");
 
@@ -24,11 +35,7 @@ export default function EditNote({
     setDiscription(notes[index].discription);
   }, [notes]);
 
-  function handleClose() {
-    setOpenHandleEdit(false);
-  }
-
-  function handleEdit(index: number) {
+  const handleEdit = (index: number) => {
     const values = [...notes];
 
     if (
@@ -46,15 +53,14 @@ export default function EditNote({
 
       setOpenHandleEdit(false);
     }
-  }
+  };
+
+  const handleClose = () => {
+    setOpenHandleEdit(false);
+  };
 
   return (
-    <Dialog
-      open={openHandleEdit}
-      onClose={handleClose}
-      maxWidth={"sm"}
-      fullWidth
-    >
+    <Dialog open={openHandleEdit} onClose={handleClose} maxWidth={"sm"} fullWidth>
       <DialogTitle
         sx={{ m: 0, p: 2, fontWeight: "bold" }}
         color={grey[900]}

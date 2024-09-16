@@ -7,21 +7,26 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogTitle,
   Typography,
 } from "@mui/material";
 import NoteDialogTitle from "./NoteDialogTitle";
+
+interface WelcomeDialogProps {
+  openWelcomeDialog: boolean;
+  setOpenWelcomeDialog: React.Dispatch<React.SetStateAction<boolean>>;
+  setOpenEncryptionDialog: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
 export default function WelcomeDialog({
   openWelcomeDialog,
   setOpenWelcomeDialog,
   setOpenEncryptionDialog,
-}: any) {
-  function handleClose() {
+}: WelcomeDialogProps) {
+  const handleClose = () => {
     setOpenWelcomeDialog(false);
     setOpenEncryptionDialog(true);
     localStorage.setItem("welcome", JSON.stringify(false));
-  }
+  };
 
   return (
     <Dialog

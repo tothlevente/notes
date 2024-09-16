@@ -12,21 +12,28 @@ import {
   Typography,
 } from "@mui/material";
 
+interface FactoryResetDialogProps {
+  openFactoryResetDialog: boolean;
+  setOpenFactoryResetDialog: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 export default function FactoryResetDialog({
   openFactoryResetDialog,
   setOpenFactoryResetDialog,
-}: any) {
-  function handleFactoryReset() {
+}: FactoryResetDialogProps) {
+  const handleFactoryReset = () => {
     localStorage.clear();
     window.location.reload();
-  }
+  };
+
+  const handleClose = () => {
+    setOpenFactoryResetDialog(false);
+  };
 
   return (
     <Dialog
       open={openFactoryResetDialog}
-      onClose={() => {
-        setOpenFactoryResetDialog(false);
-      }}
+      onClose={handleClose}
       maxWidth={"xs"}
       fullWidth
     >
@@ -52,9 +59,7 @@ export default function FactoryResetDialog({
         <Button
           variant="contained"
           color="secondary"
-          onClick={() => {
-            setOpenFactoryResetDialog(false);
-          }}
+          onClick={handleClose}
           startIcon={<BlockIcon />}
         >
           Close

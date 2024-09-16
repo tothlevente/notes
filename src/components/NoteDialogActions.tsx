@@ -3,12 +3,19 @@ import SaveIcon from "@mui/icons-material/Save";
 
 import { Button, DialogActions } from "@mui/material";
 
+interface NoteDialogActionsProps {
+  handleSave: () => void;
+  handleClose: () => void;
+  titleInput: string;
+  discriptionInput: string;
+}
+
 export default function NoteDialogActions({
   handleSave,
   handleClose,
   titleInput,
   discriptionInput,
-}: any) {
+}: NoteDialogActionsProps) {
   return (
     <DialogActions sx={{ m: 1, p: 1 }}>
       <Button

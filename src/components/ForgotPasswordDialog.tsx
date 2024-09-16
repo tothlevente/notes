@@ -28,9 +28,9 @@ export default function ForgotPasswordDialog({
     >
       <NoteDialogTitle title="Forgot your password? 🫣" />
       <DialogContent dividers sx={{ textAlign: "center" }}>
-        If you have forgotten your password, you can only use a factory reset.
-        This will delete your all notes in this browser and restore everything
-        to factory settings. You cannot undo this action later.
+        If you have forgotten your password, you can only use a factory reset. This
+        will delete your all notes in this browser and restore everything to
+        factory settings. You cannot undo this action later.
       </DialogContent>
       <DialogActions sx={{ justifyContent: "center" }}>
         <FactoryResetDialog

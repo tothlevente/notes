@@ -2,6 +2,7 @@ import getNotesLocalStorageItem from "../controllers/getNotesLocalStorageItem";
 import ForgotPasswordDialog from "./ForgotPasswordDialog";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import NoteDialogTitle from "./NoteDialogTitle";
+import NoteProps from "../interfaces/NoteProps";
 
 import { useState } from "react";
 
@@ -15,6 +16,15 @@ import {
   Typography,
 } from "@mui/material";
 
+interface DecryptionDialogProps {
+  openDecryptionDialog: boolean;
+  setOpenDecryptionDialog: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsEncrypted: React.Dispatch<React.SetStateAction<boolean>>;
+  setSecret: React.Dispatch<React.SetStateAction<string>>;
+  setNotes: React.Dispatch<React.SetStateAction<NoteProps[]>>;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 export default function DecryptionDialog({
   openDecryptionDialog,
   setOpenDecryptionDialog,
@@ -22,13 +32,13 @@ export default function DecryptionDialog({
   setSecret,
   setNotes,
   setIsLoading,
-}: any) {
+}: DecryptionDialogProps) {
   const [password, setPassword] = useState("");
   const [isWrongpassword, setIsWrongpassword] = useState(false);
   const [openForgotPassword, setOpenForgotPassword] = useState(false);
   const [openFactoryResetDialog, setOpenFactoryResetDialog] = useState(false);
 
-  function handleSave() {
+  const handleSave = () => {
     setIsEncrypted(true);
     setSecret(password);
 
@@ -41,15 +51,15 @@ export default function DecryptionDialog({
         setIsWrongpassword(true);
       }
     }
-  }
+  };
 
-  function WrongPassword() {
+  const WrongPassword = () => {
     return (
       <Alert variant="filled" severity="error" sx={{ marginBottom: 2 }}>
         You entered an incorrect password.
       </Alert>
     );
-  }
+  };
 
   return (
     <Dialog open={openDecryptionDialog} maxWidth={"sm"} fullWidth>
