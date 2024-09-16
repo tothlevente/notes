@@ -1,8 +1,8 @@
 import updateNotesLocalStorageItem from "../controllers/updateNotesLocalStorageItem";
+import DeleteNoteProps from "../interfaces/DeleteNoteProps";
 import DeleteIcon from "@mui/icons-material/Delete";
 import BlockIcon from "@mui/icons-material/Block";
 import CloseIcon from "@mui/icons-material/Close";
-import NoteProps from "../interfaces/NoteProps";
 
 import { grey, red } from "@mui/material/colors";
 
@@ -15,17 +15,6 @@ import {
   IconButton,
   Typography,
 } from "@mui/material";
-
-interface DeleteNoteProps {
-  isEncrypted: boolean;
-  secret: string;
-  openHandleDelete: boolean;
-  setOpenHandleDelte: React.Dispatch<React.SetStateAction<boolean>>;
-  notes: NoteProps[];
-  setNotes: React.Dispatch<React.SetStateAction<NoteProps[]>>;
-  id: number;
-  title: string;
-}
 
 export default function DeleteNote({
   isEncrypted,

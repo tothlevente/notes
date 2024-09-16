@@ -1,3 +1,4 @@
+import EncryptionDialogProps from "../interfaces/EncryptionDialogProps";
 import ListItemButton from "@mui/material/ListItemButton";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -10,14 +11,6 @@ import List from "@mui/material/List";
 
 import { Dialog, DialogContent, Typography } from "@mui/material";
 import { useState } from "react";
-
-interface EncryptionDialogProps {
-  openEncryptionDialog: boolean;
-  setOpenEncryptionDialog: React.Dispatch<React.SetStateAction<boolean>>;
-  setIsEncrypted: React.Dispatch<React.SetStateAction<boolean>>;
-  setSecret: React.Dispatch<React.SetStateAction<string>>;
-  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
-}
 
 export default function EncryptionDialog({
   openEncryptionDialog,

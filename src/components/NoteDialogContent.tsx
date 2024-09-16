@@ -1,12 +1,6 @@
-import { DialogContent, TextField } from "@mui/material";
+import NoteDialogContentProps from "../interfaces/NoteDialogContentProps";
 
-interface NoteDialogContentProps {
-  disabled?: boolean;
-  titleInput: string;
-  setTitleInput: React.Dispatch<React.SetStateAction<string>>;
-  discriptionInput: string;
-  setDescriptionInput: React.Dispatch<React.SetStateAction<string>>;
-}
+import { DialogContent, TextField } from "@mui/material";
 
 export default function NoteDialogContent({
   disabled,

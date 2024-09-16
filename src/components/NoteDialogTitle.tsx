@@ -1,9 +1,7 @@
+import NoteDialogTitleProps from "../interfaces/NoteDialogTitleProps";
+
 import { DialogTitle } from "@mui/material";
 import { grey } from "@mui/material/colors";
-
-interface NoteDialogTitleProps {
-  title: string;
-}
 
 export default function NoteDialogTitle({ title }: NoteDialogTitleProps) {
   return (

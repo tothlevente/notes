@@ -1,3 +1,4 @@
+import FactoryResetDialogProps from "../interfaces/FactoryResetDialogProps";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import BlockIcon from "@mui/icons-material/Block";
 import NoteDialogTitle from "./NoteDialogTitle";
@@ -11,11 +12,6 @@ import {
   DialogContent,
   Typography,
 } from "@mui/material";
-
-interface FactoryResetDialogProps {
-  openFactoryResetDialog: boolean;
-  setOpenFactoryResetDialog: React.Dispatch<React.SetStateAction<boolean>>;
-}
 
 export default function FactoryResetDialog({
   openFactoryResetDialog,

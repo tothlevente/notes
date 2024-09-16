@@ -1,14 +1,8 @@
+import NoteDialogActionsProps from "../interfaces/NoteDialogActionsProps";
 import BlockIcon from "@mui/icons-material/Block";
 import SaveIcon from "@mui/icons-material/Save";
 
 import { Button, DialogActions } from "@mui/material";
-
-interface NoteDialogActionsProps {
-  handleSave: () => void;
-  handleClose: () => void;
-  titleInput: string;
-  discriptionInput: string;
-}
 
 export default function NoteDialogActions({
   handleSave,

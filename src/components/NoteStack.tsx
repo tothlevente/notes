@@ -1,16 +1,9 @@
+import NoteStackProps from "../interfaces/NoteStackProps";
 import NoteAddIcon from "@mui/icons-material/NoteAdd";
 import NoteProps from "../interfaces/NoteProps";
 import NoteCard from "./NoteCard";
 
 import { Box, Button, Stack, Typography } from "@mui/material";
-
-interface NoteStackProps {
-  isEncrypted: boolean;
-  secret: string;
-  notes: NoteProps[];
-  setNotes: React.Dispatch<React.SetStateAction<NoteProps[]>>;
-  setOpenCreateNewNote: React.Dispatch<React.SetStateAction<boolean>>;
-}
 
 export default function NoteStack({
   isEncrypted,

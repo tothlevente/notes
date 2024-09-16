@@ -1,9 +1,9 @@
+import SettingsDialogProps from "../interfaces/SettingsDialogProps";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import DeleteSweepIcon from "@mui/icons-material/DeleteSweep";
 import FactoryResetDialog from "./FactoryResetDialog";
 import DeleteNotesDialog from "./DeleteNotesDialog";
 import BlockIcon from "@mui/icons-material/Block";
-import NoteProps from "../interfaces/NoteProps";
 import NoteDialogTitle from "./NoteDialogTitle";
 
 import { red } from "@mui/material/colors";
@@ -16,14 +16,6 @@ import {
   DialogContent,
   Typography,
 } from "@mui/material";
-
-interface SettingsDialogProps {
-  setOpenSettingsDialog: React.Dispatch<React.SetStateAction<boolean>>;
-  openSettingsDialog: boolean;
-  notes: NoteProps[];
-  setNotes: React.Dispatch<React.SetStateAction<NoteProps[]>>;
-  secret: string;
-}
 
 export default function SettingsDialog({
   setOpenSettingsDialog,

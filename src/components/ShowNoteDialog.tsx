@@ -1,3 +1,4 @@
+import ShowNoteDialogProps from "../interfaces/ShowNoteDialogProps";
 import CloseIcon from "@mui/icons-material/Close";
 
 import { grey } from "@mui/material/colors";
@@ -9,13 +10,6 @@ import {
   IconButton,
   Typography,
 } from "@mui/material";
-
-interface ShowNoteDialogProps {
-  openShowNoteDialog: boolean;
-  setOpenShowNoteDialog: React.Dispatch<React.SetStateAction<boolean>>;
-  title: string;
-  discription: string;
-}
 
 export default function ShowNoteDialog({
   openShowNoteDialog,

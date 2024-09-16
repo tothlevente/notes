@@ -1,11 +1,11 @@
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import EditNoteIcon from "@mui/icons-material/EditNote";
+import NoteCardProps from "../interfaces/NoteCardProps";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import NotesIcon from "@mui/icons-material/Notes";
 import Typography from "@mui/material/Typography";
-import NoteProps from "../interfaces/NoteProps";
 import ShowNoteDialog from "./ShowNoteDialog";
 import DeleteNote from "./DeleteNote";
 import Card from "@mui/material/Card";
@@ -14,17 +14,6 @@ import EditNote from "./EditNote";
 import { Avatar, Box, IconButton } from "@mui/material";
 import { blue, grey, red } from "@mui/material/colors";
 import { useState } from "react";
-
-interface NoteCardProps {
-  isEncrypted: boolean;
-  secret: string;
-  index: number;
-  title: string;
-  discription: string;
-  note: NoteProps;
-  notes: NoteProps[];
-  setNotes: React.Dispatch<React.SetStateAction<NoteProps[]>>;
-}
 
 export default function NoteCard({
   isEncrypted,

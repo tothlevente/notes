@@ -1,4 +1,6 @@
+import WelcomeDialogProps from "../interfaces/WelcomeDialogProps";
 import VerifiedIcon from "@mui/icons-material/Verified";
+import NoteDialogTitle from "./NoteDialogTitle";
 
 import { grey } from "@mui/material/colors";
 
@@ -9,13 +11,6 @@ import {
   DialogContent,
   Typography,
 } from "@mui/material";
-import NoteDialogTitle from "./NoteDialogTitle";
-
-interface WelcomeDialogProps {
-  openWelcomeDialog: boolean;
-  setOpenWelcomeDialog: React.Dispatch<React.SetStateAction<boolean>>;
-  setOpenEncryptionDialog: React.Dispatch<React.SetStateAction<boolean>>;
-}
 
 export default function WelcomeDialog({
   openWelcomeDialog,

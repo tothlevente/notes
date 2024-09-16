@@ -1,8 +1,8 @@
 import getNotesLocalStorageItem from "../controllers/getNotesLocalStorageItem";
+import DecryptionDialogProps from "../interfaces/DecryptionDialogProps";
 import ForgotPasswordDialog from "./ForgotPasswordDialog";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import NoteDialogTitle from "./NoteDialogTitle";
-import NoteProps from "../interfaces/NoteProps";
 
 import { useState } from "react";
 
@@ -15,15 +15,6 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-
-interface DecryptionDialogProps {
-  openDecryptionDialog: boolean;
-  setOpenDecryptionDialog: React.Dispatch<React.SetStateAction<boolean>>;
-  setIsEncrypted: React.Dispatch<React.SetStateAction<boolean>>;
-  setSecret: React.Dispatch<React.SetStateAction<string>>;
-  setNotes: React.Dispatch<React.SetStateAction<NoteProps[]>>;
-  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
-}
 
 export default function DecryptionDialog({
   openDecryptionDialog,

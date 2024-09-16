@@ -1,22 +1,12 @@
 import updateNotesLocalStorageItem from "../controllers/updateNotesLocalStorageItem";
+import EditNoteProps from "../interfaces/EditNoteProps";
 import NoteDialogContent from "./NoteDialogContent";
 import NoteDialogActions from "./NoteDialogActions";
 import CloseIcon from "@mui/icons-material/Close";
-import NoteProps from "../interfaces/NoteProps";
 
 import { Dialog, DialogTitle, IconButton } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import { useEffect, useState } from "react";
-
-interface EditNoteProps {
-  isEncrypted: boolean;
-  secret: string;
-  openHandleEdit: boolean;
-  setOpenHandleEdit: React.Dispatch<React.SetStateAction<boolean>>;
-  notes: NoteProps[];
-  setNotes: React.Dispatch<React.SetStateAction<NoteProps[]>>;
-  index: number;
-}
 
 export default function EditNote({
   isEncrypted,

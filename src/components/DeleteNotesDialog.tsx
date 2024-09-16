@@ -1,6 +1,6 @@
+import DeleteNotesDialogProps from "../interfaces/DeleteNotesDialogProps";
 import DeleteSweepIcon from "@mui/icons-material/DeleteSweep";
 import BlockIcon from "@mui/icons-material/Block";
-import NoteProps from "../interfaces/NoteProps";
 import CryptoJS from "crypto-js";
 
 import { grey, red } from "@mui/material/colors";
@@ -13,14 +13,6 @@ import {
   DialogTitle,
   Typography,
 } from "@mui/material";
-
-interface DeleteNotesDialogProps {
-  openDeleteNotesDialog: boolean;
-  setOpenDeleteNotesDialog: React.Dispatch<React.SetStateAction<boolean>>;
-  notes: NoteProps[];
-  setNotes: React.Dispatch<React.SetStateAction<NoteProps[]>>;
-  secret: string;
-}
 
 export default function DeleteNotesDialog({
   openDeleteNotesDialog,
