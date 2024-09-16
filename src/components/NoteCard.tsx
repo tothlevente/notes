@@ -38,7 +38,6 @@ export default function NoteCard({
           title={note.title}
           discription={note.discription}
         />
-
         <DeleteNoteDialog
           isEncrypted={isEncrypted}
           secret={secret}
@@ -115,59 +114,64 @@ export default function NoteCard({
             sx={{
               display: "flex",
               marginBottom: "20px",
+              justifyContent: "space-between",
             }}
           >
-            <Tooltip title="Show full note">
-              <IconButton
-                edge="end"
-                aria-label="delete"
-                sx={{
-                  marginRight: "5px",
-                  "&:hover": {
-                    color: blue[500],
-                  },
-                }}
-                onClick={() => {
-                  setOpenShowNoteDialog(true);
-                }}
-              >
-                <OpenInNewIcon />
-              </IconButton>
-            </Tooltip>
-            <Tooltip title="Edit this note">
-              <IconButton
-                edge="end"
-                aria-label="edit"
-                sx={{
-                  marginRight: "3px",
-                  "&:hover": {
-                    color: blue[500],
-                  },
-                }}
-                onClick={() => {
-                  setOpenHandleEdit(true);
-                }}
-              >
-                <EditNoteIcon />
-              </IconButton>
-            </Tooltip>
-            <Tooltip title="Delte this note">
-              <IconButton
-                edge="end"
-                aria-label="delete"
-                sx={{
-                  marginRight: "5px",
-                  "&:hover": {
-                    color: red[500],
-                  },
-                }}
-                onClick={() => {
-                  setOpenHandleDelte(true);
-                }}
-              >
-                <DeleteIcon />
-              </IconButton>
-            </Tooltip>
+            <div>
+              <Tooltip title="Show full note">
+                <IconButton
+                  edge="end"
+                  aria-label="delete"
+                  sx={{
+                    marginRight: "5px",
+                    "&:hover": {
+                      color: blue[500],
+                    },
+                  }}
+                  onClick={() => {
+                    setOpenShowNoteDialog(true);
+                  }}
+                >
+                  <OpenInNewIcon />
+                </IconButton>
+              </Tooltip>
+            </div>
+            <div>
+              <Tooltip title="Edit this note">
+                <IconButton
+                  edge="end"
+                  aria-label="edit"
+                  sx={{
+                    marginRight: "3px",
+                    "&:hover": {
+                      color: blue[500],
+                    },
+                  }}
+                  onClick={() => {
+                    setOpenHandleEdit(true);
+                  }}
+                >
+                  <EditNoteIcon />
+                </IconButton>
+              </Tooltip>
+              <Tooltip title="Delte this note">
+                <IconButton
+                  edge="end"
+                  aria-label="delete"
+                  sx={{
+                    marginRight: "5px",
+                    "&:hover": {
+                      color: red[500],
+                    },
+                  }}
+                  onClick={() => {
+                    setOpenHandleDelte(true);
+                  }}
+                >
+                  <DeleteIcon />
+                </IconButton>
+              </Tooltip>
+            </div>
           </CardActions>
         </Box>
       </Card>

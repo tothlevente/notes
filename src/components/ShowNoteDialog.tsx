@@ -1,8 +1,16 @@
 import ShowNoteDialogProps from "../interfaces/ShowNoteDialogProps";
 import CloseIcon from "@mui/icons-material/Close";
+import BlockIcon from "@mui/icons-material/Block";
 import NoteDialogTitle from "./NoteDialogTitle";
 
-import { Dialog, DialogContent, IconButton, Typography } from "@mui/material";
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  IconButton,
+  Typography,
+} from "@mui/material";
 
 export default function ShowNoteDialog({
   openShowNoteDialog,
@@ -37,6 +45,16 @@ export default function ShowNoteDialog({
       <DialogContent>
         <Typography>{discription}</Typography>
       </DialogContent>
+      <DialogActions sx={{ m: 1, p: 1, justifyContent: "center" }}>
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={() => handleClose()}
+          startIcon={<BlockIcon />}
+        >
+          Close
+        </Button>
+      </DialogActions>
     </Dialog>
   );
 }
