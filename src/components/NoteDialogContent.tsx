@@ -1,3 +1,5 @@
+import NoteDialogContentProps from "../interfaces/NoteDialogContentProps";
+
 import { DialogContent, TextField } from "@mui/material";
 
 export default function NoteDialogContent({
@@ -6,7 +8,7 @@ export default function NoteDialogContent({
   setTitleInput,
   discriptionInput,
   setDescriptionInput,
-}: any) {
+}: NoteDialogContentProps) {
   return (
     <DialogContent>
       <div style={{ marginTop: "10px" }}>

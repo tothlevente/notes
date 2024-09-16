@@ -5,11 +5,7 @@ import { grey } from "@mui/material/colors";
 
 export default function Footer() {
   return (
-    <AppBar
-      position="fixed"
-      color="primary"
-      sx={{ top: "auto", bottom: 0 }}
-    >
+    <AppBar position="fixed" color="primary" sx={{ top: "auto", bottom: 0 }}>
       <Toolbar>
         <div
           style={{
@@ -31,9 +27,8 @@ export default function Footer() {
             >
               MIT license
             </a>
-            , ad-free and does not use cookies only local storage for save
-            a notes information and manages dialogs to improve your
-            experience.
+            , ad-free and does not use cookies only local storage for save a notes
+            information and manages dialogs to improve your experience.
           </p>
           <p>You accept this when you use the website.</p>
           For more information please visit the project{" "}

@@ -1,11 +1,13 @@
+import ShowNoteDialogProps from "../interfaces/ShowNoteDialogProps";
 import CloseIcon from "@mui/icons-material/Close";
-
-import { grey } from "@mui/material/colors";
+import BlockIcon from "@mui/icons-material/Block";
+import NoteDialogTitle from "./NoteDialogTitle";
 
 import {
+  Button,
   Dialog,
+  DialogActions,
   DialogContent,
-  DialogTitle,
   IconButton,
   Typography,
 } from "@mui/material";
@@ -15,7 +17,7 @@ export default function ShowNoteDialog({
   setOpenShowNoteDialog,
   title,
   discription,
-}: any) {
+}: ShowNoteDialogProps) {
   function handleClose() {
     setOpenShowNoteDialog(false);
   }
@@ -27,14 +29,7 @@ export default function ShowNoteDialog({
       maxWidth={"sm"}
       fullWidth
     >
-      <DialogTitle
-        variant="h6"
-        color={grey[900]}
-        bgcolor={grey[200]}
-        sx={{ m: 0, p: 2, fontWeight: "bold" }}
-      >
-        {title}
-      </DialogTitle>
+      <NoteDialogTitle title={title} />
       <IconButton
         aria-label="close"
         onClick={handleClose}
@@ -47,9 +42,19 @@ export default function ShowNoteDialog({
       >
         <CloseIcon />
       </IconButton>
-      <DialogContent dividers>
+      <DialogContent>
         <Typography>{discription}</Typography>
       </DialogContent>
+      <DialogActions sx={{ m: 1, p: 1, justifyContent: "center" }}>
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={() => handleClose()}
+          startIcon={<BlockIcon />}
+        >
+          Close
+        </Button>
+      </DialogActions>
     </Dialog>
   );
 }

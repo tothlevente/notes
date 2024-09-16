@@ -1,15 +1,16 @@
+import DeleteNotesDialogProps from "../interfaces/DeleteNotesDialogProps";
 import DeleteSweepIcon from "@mui/icons-material/DeleteSweep";
 import BlockIcon from "@mui/icons-material/Block";
+import NoteDialogTitle from "./NoteDialogTitle";
 import CryptoJS from "crypto-js";
 
-import { grey, red } from "@mui/material/colors";
+import { red } from "@mui/material/colors";
 
 import {
   Button,
   Dialog,
   DialogActions,
   DialogContent,
-  DialogTitle,
   Typography,
 } from "@mui/material";
 
@@ -19,8 +20,8 @@ export default function DeleteNotesDialog({
   notes,
   setNotes,
   secret,
-}: any) {
-  function handleDeleteNotes() {
+}: DeleteNotesDialogProps) {
+  const handleDeleteNotes = () => {
     setNotes([]);
 
     if (JSON.parse(localStorage.getItem("encryption")!) === true) {
@@ -33,7 +34,7 @@ export default function DeleteNotesDialog({
     }
 
     setOpenDeleteNotesDialog(false);
-  }
+  };
 
   return (
     <Dialog
@@ -44,15 +45,8 @@ export default function DeleteNotesDialog({
       maxWidth={"xs"}
       fullWidth
     >
-      <DialogTitle
-        variant="h6"
-        color={red[600]}
-        bgcolor={grey[200]}
-        sx={{ m: 0, p: 2, fontWeight: "bold" }}
-      >
-        Are you sure?
-      </DialogTitle>
-      <DialogContent dividers>
+      <NoteDialogTitle title="Are you sure? 🤔" />
+      <DialogContent dividers sx={{ textAlign: "center" }}>
         <Typography>
           This will delete your {notes.length}{" "}
           {notes.length === 1 ? "note" : "notes"} in this browser.
@@ -61,7 +55,7 @@ export default function DeleteNotesDialog({
           You cannot undo this action later!
         </Typography>
       </DialogContent>
-      <DialogActions>
+      <DialogActions sx={{ justifyContent: "center" }}>
         <Button
           variant="contained"
           sx={{ backgroundColor: red[500] }}

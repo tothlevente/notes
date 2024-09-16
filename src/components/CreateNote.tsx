@@ -1,10 +1,11 @@
 import setNotesLocalStorageItem from "../controllers/setNotesLocalStorageItem";
+import CreateNoteProps from "../interfaces/CreateNoteProps";
 import NoteDialogContent from "./NoteDialogContent";
 import NoteDialogActions from "./NoteDialogActions";
 import CloseIcon from "@mui/icons-material/Close";
+import NoteDialogTitle from "./NoteDialogTitle";
 
-import { Dialog, DialogTitle, IconButton } from "@mui/material";
-import { grey } from "@mui/material/colors";
+import { Dialog, IconButton } from "@mui/material";
 import { useState } from "react";
 
 export default function CreateNote({
@@ -14,17 +15,11 @@ export default function CreateNote({
   setNotes,
   openCreateNewNote,
   setOpenCreateNewNote,
-}: any) {
+}: CreateNoteProps) {
   const [title, setTitle] = useState("");
   const [discription, setDescription] = useState("");
 
-  function handleClose() {
-    setTitle("");
-    setDescription("");
-    setOpenCreateNewNote(false);
-  }
-
-  function handleSave() {
+  const handleSave = () => {
     setNotes([
       ...notes,
       {
@@ -34,19 +29,19 @@ export default function CreateNote({
       },
     ]);
 
-    setNotesLocalStorageItem(
-      isEncrypted,
-      secret,
-      notes,
-      title,
-      discription
-    );
+    setNotesLocalStorageItem(isEncrypted, secret, notes, title, discription);
 
     setTitle("");
     setDescription("");
 
     setOpenCreateNewNote(false);
-  }
+  };
+
+  const handleClose = () => {
+    setTitle("");
+    setDescription("");
+    setOpenCreateNewNote(false);
+  };
 
   return (
     <Dialog
@@ -55,13 +50,7 @@ export default function CreateNote({
       maxWidth={"sm"}
       fullWidth
     >
-      <DialogTitle
-        sx={{ m: 0, p: 2, fontWeight: "bold" }}
-        color={grey[900]}
-        bgcolor={grey[200]}
-      >
-        Create a new note
-      </DialogTitle>
+      <NoteDialogTitle title="Create a new note 📝" />
       <IconButton
         aria-label="close"
         onClick={handleClose}

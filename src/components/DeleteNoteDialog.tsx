@@ -1,21 +1,22 @@
 import updateNotesLocalStorageItem from "../controllers/updateNotesLocalStorageItem";
+import DeleteNoteProps from "../interfaces/DeleteNoteProps";
 import DeleteIcon from "@mui/icons-material/Delete";
 import BlockIcon from "@mui/icons-material/Block";
 import CloseIcon from "@mui/icons-material/Close";
+import NoteDialogTitle from "./NoteDialogTitle";
 
-import { grey, red } from "@mui/material/colors";
+import { red } from "@mui/material/colors";
 
 import {
   Button,
   Dialog,
   DialogActions,
   DialogContent,
-  DialogTitle,
   IconButton,
   Typography,
 } from "@mui/material";
 
-export default function DeleteNote({
+export default function DeleteNoteDialog({
   isEncrypted,
   secret,
   openHandleDelete,
@@ -24,7 +25,7 @@ export default function DeleteNote({
   setNotes,
   id,
   title,
-}: any) {
+}: DeleteNoteProps) {
   function handleDelete(key: number) {
     const values = [...notes];
     const updatedNotes = values.filter((note) => note.id !== key);
@@ -46,13 +47,7 @@ export default function DeleteNote({
       maxWidth={"sm"}
       fullWidth
     >
-      <DialogTitle
-        sx={{ m: 0, p: 2, fontWeight: "bold" }}
-        color={grey[900]}
-        bgcolor={grey[200]}
-      >
-        Delete note
-      </DialogTitle>
+      <NoteDialogTitle title="Delete note" />
       <IconButton
         aria-label="close"
         onClick={handleClose}
@@ -65,16 +60,16 @@ export default function DeleteNote({
       >
         <CloseIcon />
       </IconButton>
-      <DialogContent sx={{ marginTop: "12px", marginBottom: "12px" }}>
+      <DialogContent
+        sx={{ marginTop: "12px", marginBottom: "12px", textAlign: "center" }}
+      >
         <Typography>
           Are you sure to delete the{" "}
-          <b>
-            {title.length < 25 ? title : title.substring(0, 25) + "..."}{" "}
-          </b>
+          <b>{title.length < 25 ? title : title.substring(0, 25) + "..."} </b>
           note?
         </Typography>
       </DialogContent>
-      <DialogActions sx={{ m: 1, p: 1 }}>
+      <DialogActions sx={{ m: 1, p: 1, justifyContent: "center" }}>
         <Button
           sx={{ backgroundColor: red[500] }}
           variant="contained"

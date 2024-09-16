@@ -1,3 +1,4 @@
+import NoteStackProps from "../interfaces/NoteStackProps";
 import NoteAddIcon from "@mui/icons-material/NoteAdd";
 import NoteProps from "../interfaces/NoteProps";
 import NoteCard from "./NoteCard";
@@ -10,7 +11,7 @@ export default function NoteStack({
   notes,
   setNotes,
   setOpenCreateNewNote,
-}: any) {
+}: NoteStackProps) {
   return (
     <>
       {notes.length === 0 ? (

@@ -46,6 +46,10 @@ export default function App() {
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("welcome")!) === null) {
       setOpenWelcomeDialog(true);
+    } else {
+      if (JSON.parse(localStorage.getItem("encryption")!) === null) {
+        localStorage.removeItem("welcome");
+      }
     }
   }, [setOpenWelcomeDialog]);
 
@@ -69,7 +73,7 @@ export default function App() {
     }
   }, [setNotes]);
 
-  function Dialogs() {
+  const Dialogs = () => {
     return (
       <>
         <WelcomeDialog
@@ -101,7 +105,7 @@ export default function App() {
         />
       </>
     );
-  }
+  };
 
   return (
     <ThemeProvider theme={theme}>

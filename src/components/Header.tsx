@@ -1,17 +1,11 @@
 import SettingsIcon from "@mui/icons-material/Settings";
 import NoteAddIcon from "@mui/icons-material/NoteAdd";
+import HeaderProps from "../interfaces/HeaderProps";
 import CreateNote from "./CreateNote";
 import Logo from "./Logo";
 
+import { AppBar, IconButton, Toolbar, Tooltip, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-
-import {
-  AppBar,
-  IconButton,
-  Toolbar,
-  Tooltip,
-  Typography,
-} from "@mui/material";
 
 export default function Header({
   isEncrypted,
@@ -21,7 +15,7 @@ export default function Header({
   openCreateNewNote,
   setOpenCreateNewNote,
   setOpenSettingsDialog,
-}: any) {
+}: HeaderProps) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <CreateNote

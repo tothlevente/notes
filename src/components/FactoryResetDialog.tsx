@@ -1,44 +1,40 @@
+import FactoryResetDialogProps from "../interfaces/FactoryResetDialogProps";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import BlockIcon from "@mui/icons-material/Block";
+import NoteDialogTitle from "./NoteDialogTitle";
 
-import { grey, red } from "@mui/material/colors";
+import { red } from "@mui/material/colors";
 
 import {
   Button,
   Dialog,
   DialogActions,
   DialogContent,
-  DialogTitle,
   Typography,
 } from "@mui/material";
 
 export default function FactoryResetDialog({
   openFactoryResetDialog,
   setOpenFactoryResetDialog,
-}: any) {
-  function handleFactoryReset() {
+}: FactoryResetDialogProps) {
+  const handleFactoryReset = () => {
     localStorage.clear();
     window.location.reload();
-  }
+  };
+
+  const handleClose = () => {
+    setOpenFactoryResetDialog(false);
+  };
 
   return (
     <Dialog
       open={openFactoryResetDialog}
-      onClose={() => {
-        setOpenFactoryResetDialog(false);
-      }}
+      onClose={handleClose}
       maxWidth={"xs"}
       fullWidth
     >
-      <DialogTitle
-        variant="h6"
-        color={red[600]}
-        bgcolor={grey[200]}
-        sx={{ m: 0, p: 2, fontWeight: "bold" }}
-      >
-        Are you sure?
-      </DialogTitle>
-      <DialogContent dividers>
+      <NoteDialogTitle title="Are you sure? 🤔" />
+      <DialogContent dividers sx={{ textAlign: "center" }}>
         <Typography>
           Factory reset will delete your all notes in this browser and restore
           everything to factory settings.
@@ -47,7 +43,7 @@ export default function FactoryResetDialog({
           You cannot undo this action later!
         </Typography>
       </DialogContent>
-      <DialogActions>
+      <DialogActions sx={{ justifyContent: "center" }}>
         <Button
           variant="contained"
           sx={{ backgroundColor: red[500] }}
@@ -59,9 +55,7 @@ export default function FactoryResetDialog({
         <Button
           variant="contained"
           color="secondary"
-          onClick={() => {
-            setOpenFactoryResetDialog(false);
-          }}
+          onClick={handleClose}
           startIcon={<BlockIcon />}
         >
           Close

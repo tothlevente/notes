@@ -1,16 +1,17 @@
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import EditNoteIcon from "@mui/icons-material/EditNote";
+import NoteCardProps from "../interfaces/NoteCardProps";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
+import DeleteNoteDialog from "./DeleteNoteDialog";
 import NotesIcon from "@mui/icons-material/Notes";
 import Typography from "@mui/material/Typography";
+import EditNoteDialog from "./EditNoteDialog";
 import ShowNoteDialog from "./ShowNoteDialog";
-import DeleteNote from "./DeleteNote";
 import Card from "@mui/material/Card";
-import EditNote from "./EditNote";
 
-import { Avatar, Box, IconButton } from "@mui/material";
+import { Avatar, Box, IconButton, Tooltip } from "@mui/material";
 import { blue, grey, red } from "@mui/material/colors";
 import { useState } from "react";
 
@@ -23,13 +24,46 @@ export default function NoteCard({
   note,
   notes,
   setNotes,
-}: any) {
+}: NoteCardProps) {
   const [openHandleDelete, setOpenHandleDelte] = useState(false);
   const [openHandleEdit, setOpenHandleEdit] = useState(false);
   const [openShowNoteDialog, setOpenShowNoteDialog] = useState(false);
 
+  const Dialogs = () => {
+    return (
+      <>
+        <ShowNoteDialog
+          openShowNoteDialog={openShowNoteDialog}
+          setOpenShowNoteDialog={setOpenShowNoteDialog}
+          title={note.title}
+          discription={note.discription}
+        />
+        <DeleteNoteDialog
+          isEncrypted={isEncrypted}
+          secret={secret}
+          openHandleDelete={openHandleDelete}
+          setOpenHandleDelte={setOpenHandleDelte}
+          notes={notes}
+          setNotes={setNotes}
+          id={note.id}
+          title={note.title}
+        />
+        <EditNoteDialog
+          isEncrypted={isEncrypted}
+          secret={secret}
+          openHandleEdit={openHandleEdit}
+          setOpenHandleEdit={setOpenHandleEdit}
+          notes={notes}
+          setNotes={setNotes}
+          index={index}
+        />
+      </>
+    );
+  };
+
   return (
     <>
+      <Dialogs />
       <Card
         sx={{
           display: "flex",
@@ -80,82 +114,67 @@ export default function NoteCard({
             sx={{
               display: "flex",
               marginBottom: "20px",
+              justifyContent: "space-between",
             }}
           >
-            <IconButton
-              edge="end"
-              aria-label="delete"
-              sx={{
-                marginRight: "5px",
-                "&:hover": {
-                  color: blue[500],
-                },
-              }}
-              onClick={() => {
-                setOpenShowNoteDialog(true);
-              }}
-            >
-              <OpenInNewIcon />
-            </IconButton>
-            <IconButton
-              edge="end"
-              aria-label="edit"
-              sx={{
-                marginRight: "3px",
-                "&:hover": {
-                  color: blue[500],
-                },
-              }}
-              onClick={() => {
-                setOpenHandleEdit(true);
-              }}
-            >
-              <EditNoteIcon />
-            </IconButton>
-            <IconButton
-              edge="end"
-              aria-label="delete"
-              sx={{
-                marginRight: "5px",
-                "&:hover": {
-                  color: red[500],
-                },
-              }}
-              onClick={() => {
-                setOpenHandleDelte(true);
-              }}
-            >
-              <DeleteIcon />
-            </IconButton>
+            <div>
+              <Tooltip title="Show full note">
+                <IconButton
+                  edge="end"
+                  aria-label="delete"
+                  sx={{
+                    marginRight: "5px",
+                    "&:hover": {
+                      color: blue[500],
+                    },
+                  }}
+                  onClick={() => {
+                    setOpenShowNoteDialog(true);
+                  }}
+                >
+                  <OpenInNewIcon />
+                </IconButton>
+              </Tooltip>
+            </div>
+            <div>
+              <Tooltip title="Edit this note">
+                <IconButton
+                  edge="end"
+                  aria-label="edit"
+                  sx={{
+                    marginRight: "3px",
+                    "&:hover": {
+                      color: blue[500],
+                    },
+                  }}
+                  onClick={() => {
+                    setOpenHandleEdit(true);
+                  }}
+                >
+                  <EditNoteIcon />
+                </IconButton>
+              </Tooltip>
+              <Tooltip title="Delte this note">
+                <IconButton
+                  edge="end"
+                  aria-label="delete"
+                  sx={{
+                    marginRight: "5px",
+                    "&:hover": {
+                      color: red[500],
+                    },
+                  }}
+                  onClick={() => {
+                    setOpenHandleDelte(true);
+                  }}
+                >
+                  <DeleteIcon />
+                </IconButton>
+              </Tooltip>
+            </div>
           </CardActions>
         </Box>
       </Card>
-      <ShowNoteDialog
-        openShowNoteDialog={openShowNoteDialog}
-        setOpenShowNoteDialog={setOpenShowNoteDialog}
-        title={note.title}
-        discription={note.discription}
-      />
-      <DeleteNote
-        isEncrypted={isEncrypted}
-        secret={secret}
-        openHandleDelete={openHandleDelete}
-        setOpenHandleDelte={setOpenHandleDelte}
-        notes={notes}
-        setNotes={setNotes}
-        index={index}
-        id={note.id}
-        title={note.title}
-      />
-      <EditNote
-        isEncrypted={isEncrypted}
-        secret={secret}
-        openHandleEdit={openHandleEdit}
-        setOpenHandleEdit={setOpenHandleEdit}
-        notes={notes}
-        setNotes={setNotes}
-        index={index}
-      />
     </>
   );
 }

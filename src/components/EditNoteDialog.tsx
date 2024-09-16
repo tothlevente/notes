@@ -1,13 +1,14 @@
 import updateNotesLocalStorageItem from "../controllers/updateNotesLocalStorageItem";
+import EditNoteProps from "../interfaces/EditNoteProps";
 import NoteDialogContent from "./NoteDialogContent";
 import NoteDialogActions from "./NoteDialogActions";
 import CloseIcon from "@mui/icons-material/Close";
+import NoteDialogTitle from "./NoteDialogTitle";
 
-import { Dialog, DialogTitle, IconButton } from "@mui/material";
-import { grey } from "@mui/material/colors";
+import { Dialog, IconButton } from "@mui/material";
 import { useEffect, useState } from "react";
 
-export default function EditNote({
+export default function EditNoteDialog({
   isEncrypted,
   secret,
   openHandleEdit,
@@ -15,7 +16,7 @@ export default function EditNote({
   notes,
   setNotes,
   index,
-}: any) {
+}: EditNoteProps) {
   const [title, setTitle] = useState("");
   const [discription, setDiscription] = useState("");
 
@@ -24,11 +25,7 @@ export default function EditNote({
     setDiscription(notes[index].discription);
   }, [notes]);
 
-  function handleClose() {
-    setOpenHandleEdit(false);
-  }
-
-  function handleEdit(index: number) {
+  const handleEdit = (index: number) => {
     const values = [...notes];
 
     if (
@@ -46,22 +43,15 @@ export default function EditNote({
 
       setOpenHandleEdit(false);
     }
-  }
+  };
+
+  const handleClose = () => {
+    setOpenHandleEdit(false);
+  };
 
   return (
-    <Dialog
-      open={openHandleEdit}
-      onClose={handleClose}
-      maxWidth={"sm"}
-      fullWidth
-    >
-      <DialogTitle
-        sx={{ m: 0, p: 2, fontWeight: "bold" }}
-        color={grey[900]}
-        bgcolor={grey[200]}
-      >
-        Edit the note
-      </DialogTitle>
+    <Dialog open={openHandleEdit} onClose={handleClose} maxWidth={"sm"} fullWidth>
+      <NoteDialogTitle title="Edit this note" />
       <IconButton
         aria-label="close"
         onClick={handleClose}

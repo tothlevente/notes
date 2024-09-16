@@ -1,3 +1,4 @@
+import NoteDialogActionsProps from "../interfaces/NoteDialogActionsProps";
 import BlockIcon from "@mui/icons-material/Block";
 import SaveIcon from "@mui/icons-material/Save";
 
@@ -8,9 +9,9 @@ export default function NoteDialogActions({
   handleClose,
   titleInput,
   discriptionInput,
-}: any) {
+}: NoteDialogActionsProps) {
   return (
-    <DialogActions sx={{ m: 1, p: 1 }}>
+    <DialogActions sx={{ m: 1, p: 1, justifyContent: "center" }}>
       <Button
         variant="contained"
         onClick={handleSave}

@@ -1,4 +1,6 @@
+import WelcomeDialogProps from "../interfaces/WelcomeDialogProps";
 import VerifiedIcon from "@mui/icons-material/Verified";
+import NoteDialogTitle from "./NoteDialogTitle";
 
 import { grey } from "@mui/material/colors";
 
@@ -7,7 +9,6 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogTitle,
   Typography,
 } from "@mui/material";
 
@@ -15,29 +16,23 @@ export default function WelcomeDialog({
   openWelcomeDialog,
   setOpenWelcomeDialog,
   setOpenEncryptionDialog,
-}: any) {
-  function handleClose() {
+}: WelcomeDialogProps) {
+  const handleClose = () => {
     setOpenWelcomeDialog(false);
     setOpenEncryptionDialog(true);
     localStorage.setItem("welcome", JSON.stringify(false));
-  }
+  };
 
   return (
     <Dialog
       open={openWelcomeDialog}
       onClose={handleClose}
       maxWidth={"sm"}
+      sx={{ borderRadius: "10px" }}
       fullWidth
     >
-      <DialogTitle
-        variant="h6"
-        color={grey[900]}
-        bgcolor={grey[200]}
-        sx={{ m: 0, p: 2, fontWeight: "bold" }}
-      >
-        Welcome in the notes! 👋
-      </DialogTitle>
-      <DialogContent dividers>
+      <NoteDialogTitle title="Welcome in the notes! 👋" />
+      <DialogContent dividers sx={{ textAlign: "center" }}>
         <Typography sx={{ marginBottom: 2 }}>
           In this web application you can save, edit and delete notes. 📝
         </Typography>
@@ -72,10 +67,10 @@ export default function WelcomeDialog({
           You accept this when you use the website.
         </Typography>
         <Typography sx={{ fontWeight: "bold" }}>
-          Thank you for visiting!
+          Thank you for visiting! ✌️
         </Typography>
       </DialogContent>
-      <DialogActions>
+      <DialogActions sx={{ justifyContent: "center" }}>
         <Button
           onClick={handleClose}
           variant="contained"
