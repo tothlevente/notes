@@ -3,8 +3,9 @@ import DeleteSweepIcon from "@mui/icons-material/DeleteSweep";
 import FactoryResetDialog from "./FactoryResetDialog";
 import DeleteNotesDialog from "./DeleteNotesDialog";
 import BlockIcon from "@mui/icons-material/Block";
+import NoteDialogTitle from "./NoteDialogTitle";
 
-import { grey, red } from "@mui/material/colors";
+import { red } from "@mui/material/colors";
 import { useState } from "react";
 
 import {
@@ -12,7 +13,6 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogTitle,
   Typography,
 } from "@mui/material";
 
@@ -55,14 +55,7 @@ export default function SettingsDialog({
       maxWidth={"sm"}
       fullWidth
     >
-      <DialogTitle
-        variant="h6"
-        color={grey[900]}
-        bgcolor={grey[200]}
-        sx={{ m: 0, p: 2, fontWeight: "bold" }}
-      >
-        Settings
-      </DialogTitle>
+      <NoteDialogTitle title="Settings" />
       <DialogContent dividers>
         <Typography variant="h6" color={red[600]} sx={{ marginBottom: "5px" }}>
           Delete notes

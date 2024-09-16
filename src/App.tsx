@@ -46,6 +46,10 @@ export default function App() {
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("welcome")!) === null) {
       setOpenWelcomeDialog(true);
+    } else {
+      if (JSON.parse(localStorage.getItem("encryption")!) === null) {
+        localStorage.removeItem("welcome");
+      }
     }
   }, [setOpenWelcomeDialog]);
 

@@ -40,6 +40,7 @@ Your app is ready to be deployed!
 - [Material UI](https://mui.com/material-ui/)
 - [Bootstrap Icons](https://icons.getbootstrap.com)
 - [CryptoJS](https://www.npmjs.com/package/crypto-js)
+- [React Hook Form](https://www.react-hook-form.com/)
 - [Material Symbols & Icons - Google Fonts](https://fonts.google.com/icons)
 
 ## Learn more:

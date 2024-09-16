@@ -1,14 +1,14 @@
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import BlockIcon from "@mui/icons-material/Block";
+import NoteDialogTitle from "./NoteDialogTitle";
 
-import { grey, red } from "@mui/material/colors";
+import { red } from "@mui/material/colors";
 
 import {
   Button,
   Dialog,
   DialogActions,
   DialogContent,
-  DialogTitle,
   Typography,
 } from "@mui/material";
 
@@ -30,15 +30,8 @@ export default function FactoryResetDialog({
       maxWidth={"xs"}
       fullWidth
     >
-      <DialogTitle
-        variant="h6"
-        color={red[600]}
-        bgcolor={grey[200]}
-        sx={{ m: 0, p: 2, fontWeight: "bold" }}
-      >
-        Are you sure?
-      </DialogTitle>
-      <DialogContent dividers>
+      <NoteDialogTitle title="Are you sure? 🤔" />
+      <DialogContent dividers sx={{ textAlign: "center" }}>
         <Typography>
           Factory reset will delete your all notes in this browser and restore
           everything to factory settings.
@@ -47,7 +40,7 @@ export default function FactoryResetDialog({
           You cannot undo this action later!
         </Typography>
       </DialogContent>
-      <DialogActions>
+      <DialogActions sx={{ justifyContent: "center" }}>
         <Button
           variant="contained"
           sx={{ backgroundColor: red[500] }}
