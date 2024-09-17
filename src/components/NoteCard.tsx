@@ -21,6 +21,7 @@ export default function NoteCard({
   index,
   title,
   discription,
+  backgroundColor,
   note,
   notes,
   setNotes,
@@ -69,7 +70,7 @@ export default function NoteCard({
           display: "flex",
           width: 500,
           height: 250,
-          bgcolor: grey[300],
+          bgcolor: backgroundColor,
           "@media (max-width: 560px)": {
             width: "auto",
             minWidth: 50,
@@ -94,7 +95,8 @@ export default function NoteCard({
               <Avatar
                 sx={{
                   marginRight: "10px",
-                  color: grey[700],
+                  color: backgroundColor,
+                  backgroundColor: grey[900],
                 }}
               >
                 <NotesIcon />

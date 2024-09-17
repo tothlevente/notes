@@ -63,6 +63,7 @@ export default function NoteStack({
                   index={index}
                   title={note.title}
                   discription={note.discription}
+                  backgroundColor={note.backgroundColor}
                   note={note}
                   notes={notes}
                   setNotes={setNotes}

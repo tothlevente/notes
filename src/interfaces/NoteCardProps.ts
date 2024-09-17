@@ -6,6 +6,7 @@ export default interface NoteCardProps {
   index: number;
   title: string;
   discription: string;
+  backgroundColor: string;
   note: NoteProps;
   notes: NoteProps[];
   setNotes: React.Dispatch<React.SetStateAction<NoteProps[]>>;
