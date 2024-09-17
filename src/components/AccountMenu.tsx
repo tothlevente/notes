@@ -1,4 +1,5 @@
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import AccountMenuProps from "../interfaces/AccountMenuProps";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Settings from "@mui/icons-material/Settings";
 import IconButton from "@mui/material/IconButton";
@@ -15,7 +16,7 @@ export default function AccountMenu({
   handleLogout,
   handleSettings,
   isEncrypted,
-}: any) {
+}: AccountMenuProps) {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const open = Boolean(anchorEl);
