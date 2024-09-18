@@ -10,9 +10,9 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 import { Box, createTheme, CssBaseline, Paper } from "@mui/material";
-import { blue, grey } from "@mui/material/colors";
 import { ThemeProvider } from "@emotion/react";
 import { useEffect, useState } from "react";
+import { grey } from "@mui/material/colors";
 
 const theme = createTheme({
   typography: {
@@ -21,13 +21,13 @@ const theme = createTheme({
   palette: {
     mode: "light",
     primary: {
-      main: blue[500],
-    },
-    secondary: {
       main: grey[800],
     },
+    secondary: {
+      main: grey[700],
+    },
     background: {
-      default: grey[50],
+      default: grey[200],
     },
   },
 });
@@ -122,7 +122,7 @@ export default function App() {
           "@media (max-width: 349px)": {
             pb: "300px",
           },
-          bgcolor: grey[50],
+          bgcolor: grey[200],
         }}
       >
         <Header

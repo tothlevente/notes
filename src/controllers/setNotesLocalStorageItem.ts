@@ -6,7 +6,8 @@ export default function setNotesLocalStorageItem(
   secret: string,
   notes: Array<NoteProps>,
   title: string,
-  discription: string
+  discription: string,
+  backgroundColor: string
 ) {
   if (isEncrypted) {
     localStorage.setItem(
@@ -18,6 +19,7 @@ export default function setNotesLocalStorageItem(
             id: Math.round(Math.random() * 10000000),
             title: title,
             discription: discription,
+            backgroundColor: backgroundColor,
           },
         ]),
         secret
@@ -32,6 +34,7 @@ export default function setNotesLocalStorageItem(
           id: Math.round(Math.random() * 10000000),
           title: title,
           discription: discription,
+          backgroundColor: backgroundColor,
         },
       ])
     );

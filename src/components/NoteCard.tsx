@@ -11,8 +11,8 @@ import EditNoteDialog from "./EditNoteDialog";
 import ShowNoteDialog from "./ShowNoteDialog";
 import Card from "@mui/material/Card";
 
-import { Avatar, Box, IconButton, Tooltip } from "@mui/material";
-import { blue, grey, red } from "@mui/material/colors";
+import { Avatar, IconButton, Tooltip } from "@mui/material";
+import { grey } from "@mui/material/colors";
 import { useState } from "react";
 
 export default function NoteCard({
@@ -21,6 +21,7 @@ export default function NoteCard({
   index,
   title,
   discription,
+  backgroundColor,
   note,
   notes,
   setNotes,
@@ -66,10 +67,11 @@ export default function NoteCard({
       <Dialogs />
       <Card
         sx={{
-          display: "flex",
           width: 500,
           height: 250,
-          bgcolor: grey[300],
+          display: "grid",
+          alignContent: "space-between",
+          bgcolor: backgroundColor,
           "@media (max-width: 560px)": {
             width: "auto",
             minWidth: 50,
@@ -83,97 +85,92 @@ export default function NoteCard({
           },
         }}
       >
-        <Box sx={{ display: "flex", flexDirection: "column" }}>
-          <CardContent sx={{ flex: "1 0 auto" }}>
-            <Typography
-              gutterBottom
-              variant="h6"
-              component="div"
-              sx={{ display: "flex" }}
+        <CardContent>
+          <Typography
+            gutterBottom
+            variant="h6"
+            component="div"
+            sx={{ display: "flex" }}
+          >
+            <Avatar
+              sx={{
+                marginRight: "10px",
+                color: backgroundColor,
+                backgroundColor: grey[900],
+              }}
             >
-              <Avatar
+              <NotesIcon />
+            </Avatar>
+            {title.length < 30 ? title : title.substring(0, 30) + "..."}
+          </Typography>
+          <Typography variant="body2" sx={{ marginTop: "12px", color: grey[900] }}>
+            {discription.length < 300
+              ? discription
+              : discription.substring(0, 300) + "..."}
+          </Typography>
+        </CardContent>
+        <CardActions
+          sx={{
+            marginBottom: "20px",
+            justifyContent: "space-between",
+          }}
+        >
+          <div>
+            <Tooltip title="Show full note">
+              <IconButton
+                edge="end"
+                aria-label="show"
                 sx={{
-                  marginRight: "10px",
-                  color: grey[700],
+                  marginRight: "5px",
+                  "&:hover": {
+                    color: grey[900],
+                  },
+                }}
+                onClick={() => {
+                  setOpenShowNoteDialog(true);
                 }}
               >
-                <NotesIcon />
-              </Avatar>
-              {title.length < 30 ? title : title.substring(0, 30) + "..."}
-            </Typography>
-            <Typography
-              variant="body2"
-              sx={{ marginTop: "12px", color: grey[900] }}
-            >
-              {discription.length < 300
-                ? discription
-                : discription.substring(0, 300) + "..."}
-            </Typography>
-          </CardContent>
-          <CardActions
-            sx={{
-              display: "flex",
-              marginBottom: "20px",
-              justifyContent: "space-between",
-            }}
-          >
-            <div>
-              <Tooltip title="Show full note">
-                <IconButton
-                  edge="end"
-                  aria-label="delete"
-                  sx={{
-                    marginRight: "5px",
-                    "&:hover": {
-                      color: blue[500],
-                    },
-                  }}
-                  onClick={() => {
-                    setOpenShowNoteDialog(true);
-                  }}
-                >
-                  <OpenInNewIcon />
-                </IconButton>
-              </Tooltip>
-            </div>
-            <div>
-              <Tooltip title="Edit this note">
-                <IconButton
-                  edge="end"
-                  aria-label="edit"
-                  sx={{
-                    marginRight: "3px",
-                    "&:hover": {
-                      color: blue[500],
-                    },
-                  }}
-                  onClick={() => {
-                    setOpenHandleEdit(true);
-                  }}
-                >
-                  <EditNoteIcon />
-                </IconButton>
-              </Tooltip>
-              <Tooltip title="Delte this note">
-                <IconButton
-                  edge="end"
-                  aria-label="delete"
-                  sx={{
-                    marginRight: "5px",
-                    "&:hover": {
-                      color: red[500],
-                    },
-                  }}
-                  onClick={() => {
-                    setOpenHandleDelte(true);
-                  }}
-                >
-                  <DeleteIcon />
-                </IconButton>
-              </Tooltip>
-            </div>
-          </CardActions>
-        </Box>
+                <OpenInNewIcon />
+              </IconButton>
+            </Tooltip>
+          </div>
+          <div>
+            <Tooltip title="Edit this note">
+              <IconButton
+                edge="end"
+                aria-label="edit"
+                sx={{
+                  marginRight: "3px",
+                  "&:hover": {
+                    color: grey[900],
+                  },
+                }}
+                onClick={() => {
+                  setOpenHandleEdit(true);
+                }}
+              >
+                <EditNoteIcon />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Delte this note">
+              <IconButton
+                edge="end"
+                aria-label="delete"
+                sx={{
+                  marginRight: "5px",
+                  "&:hover": {
+                    color: grey[900],
+                  },
+                }}
+                onClick={() => {
+                  setOpenHandleDelte(true);
+                }}
+              >
+                <DeleteIcon />
+              </IconButton>
+            </Tooltip>
+          </div>
+        </CardActions>
       </Card>
     </>
   );

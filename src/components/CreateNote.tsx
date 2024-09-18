@@ -1,10 +1,12 @@
 import setNotesLocalStorageItem from "../controllers/setNotesLocalStorageItem";
+import NoteDialogSupplements from "./NoteDialogSupplements";
 import CreateNoteProps from "../interfaces/CreateNoteProps";
 import NoteDialogContent from "./NoteDialogContent";
 import NoteDialogActions from "./NoteDialogActions";
 import CloseIcon from "@mui/icons-material/Close";
 import NoteDialogTitle from "./NoteDialogTitle";
 
+import { amber, blue, green, grey, indigo, pink, red } from "@mui/material/colors";
 import { Dialog, IconButton } from "@mui/material";
 import { useState } from "react";
 
@@ -18,6 +20,17 @@ export default function CreateNote({
 }: CreateNoteProps) {
   const [title, setTitle] = useState("");
   const [discription, setDescription] = useState("");
+  const [backgroundColor, setBackgroundColor] = useState("");
+
+  const colors = [
+    grey[400],
+    amber[500],
+    red[500],
+    blue[500],
+    green[500],
+    pink[500],
+    indigo[500],
+  ];
 
   const handleSave = () => {
     setNotes([
@@ -26,10 +39,18 @@ export default function CreateNote({
         id: Math.round(Math.random() * 10000000),
         title: title,
         discription: discription,
+        backgroundColor: backgroundColor,
       },
     ]);
 
-    setNotesLocalStorageItem(isEncrypted, secret, notes, title, discription);
+    setNotesLocalStorageItem(
+      isEncrypted,
+      secret,
+      notes,
+      title,
+      discription,
+      backgroundColor
+    );
 
     setTitle("");
     setDescription("");
@@ -54,11 +75,11 @@ export default function CreateNote({
       <IconButton
         aria-label="close"
         onClick={handleClose}
-        sx={(theme) => ({
+        sx={() => ({
           position: "absolute",
           right: 8,
           top: 8,
-          color: theme.palette.grey[500],
+          color: grey[500],
         })}
       >
         <CloseIcon />
@@ -68,6 +89,11 @@ export default function CreateNote({
         setTitleInput={setTitle}
         discriptionInput={discription}
         setDescriptionInput={setDescription}
+      />
+      <NoteDialogSupplements
+        colors={colors}
+        backgroundColor={backgroundColor}
+        setBackgroundColor={setBackgroundColor}
       />
       <NoteDialogActions
         handleSave={handleSave}

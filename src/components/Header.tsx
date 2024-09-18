@@ -1,6 +1,6 @@
-import SettingsIcon from "@mui/icons-material/Settings";
 import NoteAddIcon from "@mui/icons-material/NoteAdd";
 import HeaderProps from "../interfaces/HeaderProps";
+import AccountMenu from "./AccountMenu";
 import CreateNote from "./CreateNote";
 import Logo from "./Logo";
 
@@ -16,6 +16,14 @@ export default function Header({
   setOpenCreateNewNote,
   setOpenSettingsDialog,
 }: HeaderProps) {
+  const handleSettings = () => {
+    setOpenSettingsDialog(true);
+  };
+
+  const handleLogout = () => {
+    window.location.reload();
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <CreateNote
@@ -48,18 +56,11 @@ export default function Header({
               <NoteAddIcon />
             </IconButton>
           </Tooltip>
-          <Tooltip title="Open settings">
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="open settings"
-              sx={{ mr: 2 }}
-              onClick={() => setOpenSettingsDialog(true)}
-            >
-              <SettingsIcon />
-            </IconButton>
-          </Tooltip>
+          <AccountMenu
+            handleLogout={handleLogout}
+            handleSettings={handleSettings}
+            isEncrypted={isEncrypted}
+          />
         </Toolbar>
       </AppBar>
     </Box>
