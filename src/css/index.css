@@ -11,3 +11,19 @@ body {
   background-color: #f2f2f2;
   color: #313131;
 }
+
+.footer {
+  .typography {
+    font-size: small;
+    margin: 5px;
+  }
+
+  .link {
+    margin: 10px;
+    color: #fafafa;
+  }
+
+  .link:hover {
+    color: #ffc107;
+  }
+}

@@ -1,14 +1,14 @@
 import packageJson from "../../package.json";
+import GitHubIcon from "@mui/icons-material/GitHub";
 
-import { AppBar, Toolbar } from "@mui/material";
-import { grey } from "@mui/material/colors";
+import { AppBar, Box, Toolbar, Typography } from "@mui/material";
 
 export default function Footer() {
   return (
     <AppBar position="fixed" color="primary" sx={{ top: "auto", bottom: 0 }}>
-      <Toolbar>
-        <div
-          style={{
+      <Toolbar className="footer">
+        <Box
+          sx={{
             flex: 1,
             flexGrow: 1,
             margin: "20px",
@@ -16,45 +16,34 @@ export default function Footer() {
             textAlign: "center",
           }}
         >
-          <p>
-            This website is under{" "}
-            <a
-              className="link"
-              target="_blank"
-              rel="noreferrer"
-              style={{ color: grey[50] }}
-              href="https://github.com/tothlevente/notes/blob/main/LICENSE"
-            >
-              MIT license
-            </a>
-            , ad-free and does not use cookies only local storage for save a notes
-            information and manages dialogs to improve your experience.
-          </p>
-          <p>You accept this when you use the website.</p>
-          For more information please visit the project{" "}
-          <a
-            className="link"
-            target="_blank"
-            rel="noreferrer"
-            style={{ color: grey[50] }}
-            href="https://github.com/tothlevente/notes"
+          <Box
+            sx={{
+              fontSize: "small",
+            }}
           >
-            repository.
-          </a>
-          <p>
-            Created by{" "}
+            <Typography className="typography">
+              This website is under MIT license, ad-free and does not use cookies
+              only local storage for save a notes information and manages dialogs
+              to improve your experience.
+            </Typography>
+            <Typography className="typography">
+              For more information please visit the project repository.
+            </Typography>
+            <Typography className="typography">
+              Created by Levente in 2024 | v{packageJson.version}
+            </Typography>
+          </Box>
+          <Box>
             <a
               className="link"
               target="_blank"
               rel="noreferrer"
-              style={{ color: grey[50] }}
-              href="https://github.com/tothlevente"
+              href="https://github.com/tothlevente/notes"
             >
-              Levente
-            </a>{" "}
-            in 2024 | v{packageJson.version}
-          </p>
-        </div>
+              <GitHubIcon />
+            </a>
+          </Box>
+        </Box>
       </Toolbar>
     </AppBar>
   );
